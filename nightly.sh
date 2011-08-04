@@ -1,10 +1,10 @@
 #!/bin/sh
 hosts="jlabl3 ifarm1102"
 BUILD_SCRIPTS=/group/halld/Software/scripts/build_scripts
-BUILD_DIR=/scratch/gluex/halld_builds/`date +%F`
+BUILD_DIR=/u/scratch/gluex/halld_builds/`date +%F`
 for host in $hosts
 do
-    logfile=/scratch/gluex/halld_$host.log
+    logfile=/u/scratch/gluex/halld_$host.log
     rm -f $logfile
     env -u SSH_AUTH_SOCK ssh -i ~/.ssh/build_halld $host >& $logfile
     mv $logfile $BUILD_DIR/
