@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /scratch/marki
+cd /scratch/gluex
 rm -rf ccdb.old
 if [ -d ccdb ]
     then
