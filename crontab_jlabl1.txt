@@ -10,3 +10,5 @@ MAILTO=marki@jlab.org
 0 0 * * * cd /group/halld/Software/calib/latest ; svn update
 # run the b1pi analysis
 0 6 * * mon,thu /home/gluex/bin/b1pi_cron.sh
+# build the ccdb
+0 1 * * * /home/gluex/bin/ccdb_build.sh
