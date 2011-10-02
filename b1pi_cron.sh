@@ -1,11 +1,11 @@
 #!/bin/sh
-hosts="jlabl3 ifarml6"
-RUN_DIR=/scratch/gluex/b1pi/`date +%F`
+hosts="jlabl3 ifarm1102"
+RUN_DIR=/u/scratch/gluex/b1pi/`date +%F`
 for host in $hosts
 do
-    logfile=/scratch/gluex/b1pi_$host.log
+    logfile=/u/scratch/gluex/b1pi_$host.log
     rm -f $logfile
-    env -u SSH_AUTH_SOCK ssh -i ~/.ssh/b1pi_cron $host >& $logfile
+    env -u SSH_AUTH_SOCK ssh -i ~/.ssh/b1pi_cron $host > $logfile 2>&1
     mv $logfile $RUN_DIR/
 done
 exit
