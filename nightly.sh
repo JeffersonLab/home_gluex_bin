@@ -1,7 +1,7 @@
 #!/bin/sh
 hosts="jlabl3 ifarm1102"
 BUILD_SCRIPTS=/group/halld/Software/scripts/build_scripts
-BUILD_DIR=/u/scratch/gluex/halld_builds/`date +%F`
+BUILD_DIR=/group/halld/Software/builds/sim-recon/nightly/`date +%F`
 for host in $hosts
 do
     logfile=/u/scratch/gluex/halld_$host.log

@@ -1,5 +1,5 @@
 #!/bin/sh
-BUILD_DIR=/scratch/gluex/halld_builds/`date +%F`
+BUILD_DIR=/group/halld/Software/builds/sim-recon/nightly/`date +%F`
 REPORT_FILE=/tmp/nightly_report.txt
 rm -f $REPORT_FILE
 echo ================ ERRORS ================ > $REPORT_FILE
