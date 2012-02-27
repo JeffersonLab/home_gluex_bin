@@ -1,5 +1,5 @@
 #!/bin/sh
-hosts="jlabl3 ifarm1102"
+hosts="jlabl3 ifarm1102 roentgen"
 BUILD_SCRIPTS=/group/halld/Software/scripts/build_scripts
 BUILD_DIR=/group/halld/Software/builds/sim-recon/nightly/`date +%F`
 for host in $hosts
