@@ -4,15 +4,15 @@ SHELL=/bin/tcsh
 MAILTO=marki@jlab.org
 #
 # run at 3:15 am every day
-15 3 * * * /home/gluex/bin/nightly.sh
-0 6 * * mon,thu /home/gluex/bin/nightly_report.sh
+0 0 * * * /home/gluex/bin/nightly.sh
+0 8 * * mon,thu /home/gluex/bin/nightly_report.sh
 # update the latest version of calibration constants
 0 0 * * * cd /group/halld/Software/calib/latest ; svn update
 # run the b1pi analysis
-0 6 * * mon,thu /home/gluex/bin/b1pi_cron.sh
+0 8 * * mon,thu /home/gluex/bin/b1pi_cron.sh
 # build the ccdb
 0 1 * * * /home/gluex/bin/ccdb_build.sh
 # delete old nightly builds
 0 0 * * * echo delete old nightly builds ; find /group/halld/Software/builds/sim-recon/nightly -maxdepth 1 -mindepth 1 -type d -mtime +0 -print -exec rm -rf {} \;
 # test single track reconstruction
-0 6 * * * /home/gluex/bin/single_track_cron.sh
+0 8 * * tue,fri /home/gluex/bin/single_track_cron.sh
