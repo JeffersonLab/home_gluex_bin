@@ -16,3 +16,4 @@ MAILTO=marki@jlab.org
 0 0 * * * echo delete old nightly builds ; find /group/halld/Software/builds/sim-recon/nightly -maxdepth 1 -mindepth 1 -type d -mtime +0 -print -exec rm -rf {} \;
 # test single track reconstruction
 0 8 * * tue,fri /home/gluex/bin/single_track_cron.sh
+0 0 * * * /home/gluex/ccdb_gen/ccdb_generate_from_files.csh
