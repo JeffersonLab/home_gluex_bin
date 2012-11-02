@@ -1,5 +1,7 @@
 #!/bin/sh
-cd /scratch/gluex
+BUILD_DIR=/scratch/gluex/ccdb_nightly
+mkdir -p $BUILD_DIR
+cd $BUILD_DIR
 rm -rf ccdb.old
 if [ -d ccdb ]
     then
