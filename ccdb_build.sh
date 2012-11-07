@@ -13,12 +13,11 @@ svn checkout https://phys12svn.jlab.org/repos/trunk/ccdb
 cd ccdb
 . environment.bash
 scons
-ccdb_tests -t
-chmod a+x bin/ccdbcmd
-ccdbcmd -i <<EOT
+export CCDB_CONNECTION=mysql://ccdb_user@halldweb1.jlab.org/ccdb
+#tests_ccdb
+ccdb -i <<EOT
 help
 quit
 +
 EOT
 exit
-
