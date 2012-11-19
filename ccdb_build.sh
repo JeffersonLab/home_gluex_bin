@@ -1,6 +1,5 @@
 #!/bin/sh
-use python 27
-export PATH=/apps/gcc/4.6.3/bin:$PATH
+export PATH=/apps/python/bin:/apps/gcc/4.6.3/bin:$PATH
 BUILD_DIR=/scratch/gluex/ccdb_nightly
 mkdir -p $BUILD_DIR
 cd $BUILD_DIR
