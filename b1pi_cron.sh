@@ -1,5 +1,5 @@
 #!/bin/sh
-hosts="jlabl3 ifarm1102 ifarm12s01"
+hosts="jlabl3 ifarm1101 ifarm12s01"
 RUN_DIR=/u/scratch/gluex/b1pi/`date +%F`
 for host in $hosts
 do
