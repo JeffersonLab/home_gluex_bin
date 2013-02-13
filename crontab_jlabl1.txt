@@ -3,21 +3,39 @@ SHELL=/bin/tcsh
 # mail any output to `marki@jlab.org`
 MAILTO=marki@jlab.org
 #
-# run at 3:15 am every day
+# nightly build
+#
 0 0 * * * /home/gluex/bin/nightly.sh
-# send out a report
+#
+# nightly build report
+#
 #0 8 * * mon,thu /home/gluex/bin/nightly_report.sh
-# update the latest version of calibration constants
+#
+# calib svn update
+#
 #0 0 * * * cd /group/halld/Software/calib/latest ; svn update
-# run the b1pi analysis
+#
+# b1pi analysis
+#
 0 8 * * mon,thu /home/gluex/bin/b1pi_cron.sh
-# build the ccdb
+#
+# ccdb nightly build
+#
 0 1 * * * /home/gluex/bin/ccdb_build.sh
+#
 # delete old nightly builds
+#
 0 0 * * * echo delete old nightly builds ; find /group/halld/Software/builds/nightly -maxdepth 1 -mindepth 1 -type d -mtime +0 -print -exec rm -rf {} \;
-# test single track reconstruction
+#
+# single track reconstruction
+#
 0 8 * * tue,fri /home/gluex/bin/single_track_cron.sh
-# update the data challenge web site
+#
+# data challenge web site update
+#
 0 * * * * cd /group/halld/www/halldweb1/html/data_challenge ; svn update | grep -v At\ revision
-# update the ccdb mirror server
+#
+# ccdb mirror server update
+#
 0 0 * * * /home/gluex/bin/ccdb_mirror.sh
+#
