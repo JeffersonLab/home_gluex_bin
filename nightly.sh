@@ -9,6 +9,8 @@ do
     env -u SSH_AUTH_SOCK ssh -i ~/.ssh/build_halld $host >& $logfile
     mv $logfile $BUILD_DIR/
 done
+# send results to the simple list
+/home/gluex/bin/nightly_build_message.sh
 grep -e ' Error ' -e 'Command not found' -e ' warning: ' -e ' Warning: ' -e 'error: ' -e 'No such file' $BUILD_DIR/*.log
 # make doxygen docs
 cd $BUILD_DIR/sim-recon/src/doc
