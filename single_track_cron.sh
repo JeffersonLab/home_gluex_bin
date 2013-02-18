@@ -8,4 +8,5 @@ do
     env -u SSH_AUTH_SOCK ssh -i ~/.ssh/single_track_cron $host > $logfile 2>&1
     mv $logfile $WEBDIR/
 done
+/home/gluex/bin/single_track_message.sh
 exit
