@@ -17,7 +17,7 @@ MAILTO=marki@jlab.org
 #
 # b1pi analysis
 #
-0 8 * * mon,thu /home/gluex/bin/b1pi_cron.sh
+0 8 * * mon,thu /group/halld/Software/scripts/b1pi_macros/b1pi_cron.sh
 #
 # delete old nightly builds
 #
@@ -25,7 +25,7 @@ MAILTO=marki@jlab.org
 #
 # single track reconstruction
 #
-0 8 * * tue,fri /home/gluex/bin/single_track_cron.sh
+0 8 * * tue,fri /group/halld/Software/scripts/single_track_macros/single_track_cron.sh
 #
 # data challenge web site update
 #
