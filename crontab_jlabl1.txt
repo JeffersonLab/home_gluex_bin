@@ -21,7 +21,7 @@ MAILTO=marki@jlab.org
 #
 # delete old nightly builds
 #
-0 0 * * * echo delete old nightly builds ; find /group/halld/Software/builds/nightly -maxdepth 1 -mindepth 1 -type d -mtime +0 -print -exec rm -rf {} \;
+0 0 * * * echo delete old nightly builds ; find /group/halld/Software/builds/nightly -maxdepth 1 -mindepth 1 -type d -mtime +1 -print -exec rm -rf {} \;
 #
 # single track reconstruction
 #
