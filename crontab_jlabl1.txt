@@ -7,10 +7,6 @@ MAILTO=marki@jlab.org
 #
 0 0 * * * /home/gluex/bin/nightly.sh
 #
-# nightly build report
-#
-#0 8 * * mon,thu /home/gluex/bin/nightly_report.sh
-#
 # calib svn update
 #
 #0 0 * * * cd /group/halld/Software/calib/latest ; svn update
