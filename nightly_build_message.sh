@@ -6,7 +6,7 @@ rm -f $REPORT_FILE
 echo ================ ERRORS ================ > $REPORT_FILE
 grep -e ' Error ' -e 'Command not found' -e 'error: ' -e 'No such file' $BUILD_DIR/*.log >> $REPORT_FILE
 echo ================ WARNINGS ============== >> $REPORT_FILE
-grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log | grep -v hdv_mainframe_Dict.cc | grep -v 'has modification time' | grep -v 'Clock skew detected' | grep -v 'Obsolete: ' | grep -v 'AMPTOOLS or CLHEP is not defined' | grep -v dl_routines >> $REPORT_FILE
+grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log | grep -v hdv_mainframe_Dict.cc | grep -v 'has modification time' | grep -v 'Clock skew detected' | grep -v 'Obsolete: ' | grep -v 'AMPTOOLS or CLHEP is not defined' | grep -v dl_routines | grep -v "variable 'pyk'" | grep -v "variable 'pychge'" | grep -v "variable 'pycomp'" >> $REPORT_FILE
 lines=`wc -l $REPORT_FILE | perl -n -e 'split; print $_[0]'`
 echo "number of lines in report file $REPORT_FILE is $lines"
 if [ $lines -gt 2 ]
