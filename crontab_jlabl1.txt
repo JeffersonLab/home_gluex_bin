@@ -31,3 +31,7 @@ MAILTO=marki@jlab.org
 #
 0 0 * * * /home/gluex/bin/ccdb_mirror.sh
 #
+# valgrind test
+#
+* * * * * /group/halld/Software/scripts/valgrind/valgrind_cron.sh
+#
