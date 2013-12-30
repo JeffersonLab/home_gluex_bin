@@ -15,9 +15,9 @@ MAILTO=marki@jlab.org
 #
 0 8 * * mon,thu /group/halld/Software/scripts/b1pi_macros/b1pi_cron.sh
 #
-# delete old nightly builds
+# move old nightly builds to scratch disk
 #
-0 0 * * * echo delete old nightly builds ; find /group/halld/Software/builds/nightly -maxdepth 1 -mindepth 1 -type d -mtime +1 -print -exec rm -rf {} \;
+0 0 * * * echo moving old nightly builds ; find /group/halld/Software/builds/nightly -maxdepth 1 -mindepth 1 -type d -mtime +1 -print -exec mv {} /scratch/gluex/nightly/ \;
 #
 # single track reconstruction
 #
@@ -33,5 +33,9 @@ MAILTO=marki@jlab.org
 #
 # valgrind test
 #
-* * * * * /group/halld/Software/scripts/valgrind/valgrind_cron.sh
+0 0 * * wed,sat /group/halld/Software/scripts/valgrind/valgrind_cron.sh
+#
+# update build_scripts directory
+#
+0 0 * * * cd /group/halld/Software/scripts/build_scripts ; svn update
 #
