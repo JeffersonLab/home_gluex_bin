@@ -31,6 +31,10 @@ MAILTO=marki@jlab.org
 #
 0 0 * * * /home/gluex/bin/ccdb_mirror.sh
 #
+# ccdb sqlite version
+#
+0 0 * * * /home/gluex/bin/ccdb_sqlite_create.sh 
+#
 # valgrind test
 #
 0 0 * * wed,sat /group/halld/Software/scripts/valgrind/valgrind_cron.sh
