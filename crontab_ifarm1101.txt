@@ -1,0 +1,2 @@
+0 0,4,8,12,16,20 * * * /home/gluex/halld/jproj/scripts/fill_in_job_details.pl
+0 * * * * /home/gluex/halld/jproj/scripts/dc_02_driver.sh
