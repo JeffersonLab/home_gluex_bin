@@ -6,6 +6,10 @@ for host in $hosts
 do
     logfile=/u/scratch/gluex/halld_$host.log
     rm -f $logfile
+    # the following ssh executes command associated with the
+    # /home/gluex/.ssh/build_halld.pub key in
+    # /home/gluex/.ssh/authorized_keys. That command should be
+    # /group/halld/Software/scripts/build_scripts/build_halld.csh.
     env -u SSH_AUTH_SOCK ssh -i ~/.ssh/build_halld $host >& $logfile
     mv $logfile $BUILD_DIR/
 done
