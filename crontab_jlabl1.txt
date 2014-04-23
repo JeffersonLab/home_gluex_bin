@@ -34,9 +34,8 @@ MAILTO=marki@jlab.org
 # ccdb sqlite version
 #     create new versions
 0 0 * * * /home/gluex/bin/ccdb_sqlite_create.sh 
-49 13 16 1 * /home/gluex/bin/ccdb_sqlite_create.sh
-#     delete old versions (ls for now)
-0 0 * * * cd /group/halld/Software/calib/ccdb_sqlite ; find . \( \( -atime +7 -not -name \*07.sqlite -not -name \*14.sqlite -not -name \*21.sqlite -not -name \*28.sqlite \) -o \( -atime +30 -not -name \*07.sqlite \) \) -not -name ccdb_2013-01-17.sqlite -exec ls -lu {} \;
+#     delete old versions
+0 0 * * * cd /group/halld/Software/calib/ccdb_sqlite ; find . \( \( -atime +3 -not -name \*07.sqlite -not -name \*14.sqlite -not -name \*21.sqlite -not -name \*28.sqlite \) -o \( -atime +30 -not -name \*07.sqlite \) \) -not -name ccdb_2013-01-17.sqlite -exec rm -v {} \;
 #
 # update ccdb users from NIS tables
 #
