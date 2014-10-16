@@ -17,15 +17,16 @@ MAILTO=marki@jlab.org
 #
 # move old nightly builds to scratch disk
 #
-0 0 * * * echo moving old nightly builds ; find /group/halld/Software/builds/nightly -maxdepth 1 -mindepth 1 -type d -mtime +1 -print -exec mv {} /scratch/gluex/nightly/ \;
+0 0 * * * echo delete old nightly builds ; cd /u/scratch/gluex/nightly ; ls | perl -n -e 'print; chomp; $dir = $_; $count = `find $dir -type f | head | wc -l`; chomp $count; print "$count\n"; if (! $count) {system "rm -rfv $dir\n"}'
 #
 # single track reconstruction
 #
 0 8 * * tue,fri /group/halld/Software/scripts/single_track_macros/single_track_cron.sh
 #
-# data challenge web site update
+# production web site updates
 #
 0 * * * * cd /group/halld/www/halldweb1/html/data_challenge ; svn update | grep -v At\ revision
+0 * * * * cd /group/halld/www/halldweb1/html/detcom ; svn update | grep -v At\ revision
 #
 # ccdb mirror server update
 #
