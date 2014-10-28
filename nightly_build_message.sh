@@ -1,5 +1,5 @@
 #!/bin/sh
-BUILD_DIR=/group/halld/Software/builds/nightly/`date +%F`
+BUILD_DIR=/u/scratch/gluex/nightly/`date +%F`
 REPORT_FILE=/tmp/nightly_report.txt
 LIST_DIR=/group/halld/Software/scripts/simple_email_list/lists/nightly_build
 rm -f $REPORT_FILE

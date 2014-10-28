@@ -1,3 +1,4 @@
+setenv AT_JLAB 1
 source ~marki/.alias
 eval `~marki/bin/addpath.pl /home/marki/bin`
 setenv EDITOR emacs
