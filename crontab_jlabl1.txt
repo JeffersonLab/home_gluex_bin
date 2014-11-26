@@ -13,11 +13,11 @@ MAILTO=marki@jlab.org
 #
 # b1pi analysis
 #
-0 8 * * mon,thu /group/halld/Software/scripts/b1pi_macros/b1pi_cron.sh
+0 8 * * mon,thu /group/halld/Software/scripts/b1pi_test/b1pi_cron.sh
 #
-# move old nightly builds to scratch disk
+# delete old nightly builds on scratch disk
 #
-0 0 * * * echo delete old nightly builds ; cd /u/scratch/gluex/nightly ; ls | perl -n -e 'print; chomp; $dir = $_; $count = `find $dir -type f | head | wc -l`; chomp $count; print "$count\n"; if (! $count) {system "rm -rfv $dir\n"}'
+0 5 * * * echo delete old nightly builds ; cd /u/scratch/gluex/nightly ; ls | perl -n -e 'print; chomp; $dir = $_; $count = `find $dir -type f | head | wc -l`; chomp $count; print "$count\n"; if (! $count) {print "removing directory $dir\n"; system "rm -rf $dir\n"}'
 #
 # single track reconstruction
 #
@@ -50,3 +50,8 @@ MAILTO=marki@jlab.org
 #
 0 0 * * * cd /group/halld/Software/scripts/build_scripts ; svn update
 #
+# test ccdb
+#
+0 0 * * * /home/gluex/bin/ccdb_test.sh
+# end of crontab
+
