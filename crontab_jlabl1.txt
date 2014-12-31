@@ -17,7 +17,7 @@ MAILTO=marki@jlab.org
 #
 # delete old nightly builds on scratch disk
 #
-0 5 * * * echo delete old nightly builds ; cd /u/scratch/gluex/nightly ; ls | perl -n -e 'print; chomp; $dir = $_; $count = `find $dir -type f | head | wc -l`; chomp $count; print "$count\n"; if (! $count) {print "removing directory $dir\n"; system "rm -rf $dir\n"}'
+0 5 * * * /home/gluex/bin/delete_old_nightly.sh
 #
 # single track reconstruction
 #
@@ -36,7 +36,7 @@ MAILTO=marki@jlab.org
 #     create new versions
 0 0 * * * /home/gluex/bin/ccdb_sqlite_create.sh 
 #     delete old versions
-0 0 * * * cd /group/halld/Software/calib/ccdb_sqlite ; find . \( \( -atime +3 -not -name \*07.sqlite -not -name \*14.sqlite -not -name \*21.sqlite -not -name \*28.sqlite \) -o \( -atime +30 -not -name \*07.sqlite \) \) -not -name ccdb_2013-01-17.sqlite -exec rm -v {} \;
+0 0 * * * cd /group/halld/Software/calib/ccdb_sqlite ; find . \( \( -atime +5 -not -name \*07.sqlite -not -name \*14.sqlite -not -name \*21.sqlite -not -name \*28.sqlite \) -o \( -atime +30 -not -name \*07.sqlite \) \) -not -name ccdb_2013-01-17.sqlite -exec rm -v {} \;
 #
 # update ccdb users from NIS tables
 #
