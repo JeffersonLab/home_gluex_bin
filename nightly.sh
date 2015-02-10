@@ -1,5 +1,5 @@
 #!/bin/sh
-hosts="jlabl1 jlabl3 ifarm1102"
+hosts="jlabl1 jlabl3 ifarm1102 ifarm1401"
 BUILD_SCRIPTS=/group/halld/Software/scripts/build_scripts
 BUILD_DIR=/u/scratch/gluex/nightly/`date +%F`
 for host in $hosts
