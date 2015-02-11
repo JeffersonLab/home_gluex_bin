@@ -16,7 +16,10 @@ grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log | \
     >> $REPORT_FILE
 lines=`wc -l $REPORT_FILE | perl -n -e 'split; print $_[0]'`
 echo "number of lines in report file $REPORT_FILE is $lines"
-cp -pv $REPORT_FILE $LIST_DIR/message.txt
-pushd $LIST_DIR
-$LIST_DIR/../../scripts/simple_email_list.pl
+if [ $lines -gt 2 ]
+then
+    cp -pv $REPORT_FILE $LIST_DIR/message.txt
+    pushd $LIST_DIR
+    $LIST_DIR/../../scripts/simple_email_list.pl
+fi
 exit
