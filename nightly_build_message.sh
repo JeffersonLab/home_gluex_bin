@@ -25,6 +25,8 @@ then
     $LIST_DIR/../../scripts/simple_email_list.pl
     popd
     pushd $WEB_DIR
+    mv -v nightly_build_errors_5.txt nightly_build_errors_6.txt
+    mv -v nightly_build_errors_4.txt nightly_build_errors_5.txt
     mv -v nightly_build_errors_3.txt nightly_build_errors_4.txt
     mv -v nightly_build_errors_2.txt nightly_build_errors_3.txt
     mv -v nightly_build_errors_1.txt nightly_build_errors_2.txt
