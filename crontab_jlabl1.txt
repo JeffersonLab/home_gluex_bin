@@ -7,10 +7,6 @@ MAILTO=marki@jlab.org
 #
 0 0 * * * /home/gluex/bin/nightly.sh
 #
-# calib svn update
-#
-#0 0 * * * cd /group/halld/Software/calib/latest ; svn update
-#
 # b1pi analysis
 #
 0 8 * * mon,thu /group/halld/Software/scripts/b1pi_test/b1pi_cron.sh
@@ -23,16 +19,7 @@ MAILTO=marki@jlab.org
 #
 0 8 * * tue,fri /group/halld/Software/scripts/single_track_macros/single_track_cron.sh
 #
-# production web site updates
-#
-0 * * * * cd /group/halld/www/halldweb1/html/data_challenge ; svn update | grep -v At\ revision
-0 * * * * cd /group/halld/www/halldweb1/html/detcom ; svn update | grep -v At\ revision
-#
-# ccdb mirror server update
-#
-0 0 * * * /home/gluex/bin/ccdb_mirror.sh
-#
-# ccdb sqlite version
+# ccdb sqlite version management
 #     create new versions
 0 0 * * * /home/gluex/bin/ccdb_sqlite_create.sh 
 #     delete old versions
@@ -43,8 +30,8 @@ MAILTO=marki@jlab.org
 0 0 * * * /home/gluex/bin/ccdb_update_users.sh
 #
 # valgrind test
-#
-0 0 * * wed,sat /group/halld/Software/scripts/valgrind/valgrind_cron.sh
+#   commented out until we have something
+#0 0 * * wed,sat /group/halld/Software/scripts/valgrind/valgrind_cron.sh
 #
 # update build_scripts directory
 #
