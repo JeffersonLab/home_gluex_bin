@@ -40,5 +40,7 @@ MAILTO=marki@jlab.org
 # test ccdb
 #
 0 0 * * * /home/gluex/bin/ccdb_test.sh
+# update local sim-recon git repository
+55 11,23 * * * cd /group/halld/Repositories/sim-recon ; git fetch ; git pull ; cd /group/halld/Repositories/hdds ; git fetch ; git pull
 # end of crontab
 
