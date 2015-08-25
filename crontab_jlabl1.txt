@@ -33,14 +33,16 @@ MAILTO=marki@jlab.org
 #   commented out until we have something
 #0 0 * * wed,sat /group/halld/Software/scripts/valgrind/valgrind_cron.sh
 #
-# update build_scripts directory
-#
-0 0 * * * cd /group/halld/Software/scripts/build_scripts ; svn update
-#
 # test ccdb
 #
 0 0 * * * /home/gluex/bin/ccdb_test.sh
-# update local sim-recon git repository
-55 11,23 * * * cd /group/halld/Repositories/sim-recon ; git fetch ; git pull ; cd /group/halld/Repositories/hdds ; git fetch ; git pull
+#
+# update local git repositories
+#
+55 11,23 * * * cd /group/halld/Repositories/sim-recon ; git fetch ; git pull ; cd /group/halld/Repositories/hdds ; git fetch ; git pull; cd /group/halld/Repositories/build_scripts ; git fetch ; git pull
+#
+# send out summary of days changes to CCDB
+#
+0 0 * * * /home/gluex/bin/ccdb_changes.sh
 # end of crontab
 
