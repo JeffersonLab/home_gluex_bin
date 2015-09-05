@@ -5,7 +5,7 @@ rm -fv $message
 touch $message
 for repo in sim-recon hdds hdpm build_scripts git_test
 do
-    echo $repo >> $message
+    echo ----- $repo ----- >> $message
     cd /group/halld/Repositories/$repo
     git fetch >> $message
     git pull >> $message
