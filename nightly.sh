@@ -1,5 +1,6 @@
 #!/bin/sh
 hosts="jlabl1 jlabl3 ifarm1101 ifarm1401 lorentz"
+SCRIPTS=/group/halld/Software/scripts
 BUILD_SCRIPTS=/group/halld/Software/build_scripts
 BUILD_DIR=/u/scratch/gluex/nightly/`date +%F`
 for host in $hosts
@@ -21,7 +22,7 @@ cd $BUILD_DIR/`$BUILD_SCRIPTS/osrelease.pl`/sim-recon/src/doc
 make clean
 make > make.log
 # make svn statistics
-$BUILD_SCRIPTS/../make_SVNreport > SVNreport.log
+$SCRIPTS/make_SVNreport > SVNreport.log
 mv SVNstats html
 make install
 # exit
