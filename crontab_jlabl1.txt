@@ -39,7 +39,7 @@ MAILTO=marki@jlab.org
 #
 # update local git repositories
 #
-55 11,23 * * * cd /group/halld/Repositories/sim-recon ; git fetch ; git pull ; cd /group/halld/Repositories/hdds ; git fetch ; git pull; cd /group/halld/Repositories/build_scripts ; git fetch ; git pull ; cd /group/halld/Software/build_scripts ; git fetch ; git pull
+55 23 * * * /home/gluex/bin/git_update.sh
 #
 # send out summary of days changes to CCDB
 #
