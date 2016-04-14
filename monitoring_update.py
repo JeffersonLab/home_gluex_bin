@@ -31,13 +31,14 @@ def main():
 
     # write message file
     message_file = open("/group/halld/Software/scripts/simple_email_list/lists/monitoring_update/message.txt", "w")
+    #message_file = open("/work/halld2/home/jrsteven/monitoring/simple_email_list/lists/monitoring_update/message.txt", "w") # just for testing
     message_file.write( "Plot browser links for yesterday's runs (since %s): Runs included %d-%d \n\n" % (beginTime.strftime("%Y-%m-%d %H:%M:%S"), beginRun, endRun) )
 
     # set list of histograms titles and names in this list
-    hist_names = [["CDC Occupancy", "CDC_occupancy"]]
+    hist_names = [["CDC_occupancy","CDC"],["FCAL_occupancy","FCAL"],["BCAL_occupancy","BCAL"],["PS_occupancy","PS"],["RF_TPOL_occupancy","RF & TPOL"],["ST_occupancy","ST"],["TAGGER_occupancy","TAGGER"],["TOF_occupancy","TOF"]]
 
     for hist in hist_names:
-        message_file.write( "%s: https://halldweb.jlab.org/cgi-bin/data_monitoring/monitoring/plotBrowser.py?run_number1=%d&run_number2=%d&plot=%s&ver=ver00" % (hist[0], beginRun, endRun, hist[1]) )
+        message_file.write( "%s: https://halldweb.jlab.org/cgi-bin/data_monitoring/monitoring/plotBrowser.py?run1=%d&run2=%d&plot=%s&ver=ver00 \n\n" % (hist[1], beginRun, endRun, hist[0]) )
 
     message_file.close()
 
