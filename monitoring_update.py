@@ -18,6 +18,7 @@ def main():
 
     # date and time for 24 hours previous
     beginTime = datetime.datetime.now() - datetime.timedelta(days=1)
+    beginRun = 0
 
     # get first and last runs for the last 24 hours
     query = "event_count>100000 and @is_production" # and time > %s" % beginTime
@@ -28,6 +29,10 @@ def main():
             beginRun = run.number
             break
     endRun = runs[-1].number
+
+    # check for new runs
+    if beginRun == 0:
+	sys.exit()
 
     # write message file
     message_file = open("/group/halld/Software/scripts/simple_email_list/lists/monitoring_update/message.txt", "w")
