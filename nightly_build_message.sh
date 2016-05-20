@@ -5,6 +5,7 @@ LIST_DIR=/group/halld/Software/scripts/simple_email_list/lists/nightly_build
 WEB_DIR=/group/halld/www/halldweb/html/nightly
 rm -f $REPORT_FILE
 date > $REPORT_FILE
+Previous messages at https://halldweb.jlab.org/nightly/
 echo ================ ERRORS ================ >> $REPORT_FILE
 grep -e ' Error ' -e 'Command not found' -e 'error: ' -e 'No such file' \
     $BUILD_DIR/*.log >> $REPORT_FILE
