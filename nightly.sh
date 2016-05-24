@@ -1,12 +1,19 @@
 #!/bin/sh
-hosts="jlabl1 jlabl3 ifarm1401 jlabl5"
+hosts="jlabl1 jlabl3 ifarm1401 jlabl5 ifarm1102"
 SCRIPTS=/group/halld/Software/scripts
 BUILD_SCRIPTS=/group/halld/Software/build_scripts
 BUILD_DIR=/u/scratch/gluex/nightly/`date +%F`
 for host in $hosts
 do
     logfile=/u/scratch/gluex/halld_$host.log
-    rm -f $logfile
+    module_to_load_file=/u/scratch/gluex/nightly_module.txt
+    rm -f $logfile $module_to_load_file
+    if [ "$host" = ifarm1102 ]
+	then
+	echo gcc_4.9.2 > $module_to_load_file
+    else
+	touch $module_to_load_file
+    fi
     # the following ssh executes command associated with the
     # /home/gluex/.ssh/build_halld.pub key in
     # /home/gluex/.ssh/authorized_keys. That command should be
