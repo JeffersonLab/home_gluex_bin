@@ -7,13 +7,6 @@ for host in $hosts
 do
     logfile=/u/scratch/gluex/halld_$host.log
     module_to_load_file=/u/scratch/gluex/nightly_module.txt
-    rm -f $logfile $module_to_load_file
-    if [ "$host" = ifarm1102 ]
-	then
-	echo gcc_4.9.2 > $module_to_load_file
-    else
-	touch $module_to_load_file
-    fi
     # the following ssh executes command associated with the
     # /home/gluex/.ssh/build_halld.pub key in
     # /home/gluex/.ssh/authorized_keys. That command should be
@@ -25,6 +18,13 @@ done
 /home/gluex/bin/nightly_build_message.sh
 grep -e ' Error ' -e 'Command not found' -e ' warning: ' -e ' Warning: ' -e 'error: ' -e 'No such file' $BUILD_DIR/*.log
 # make doxygen docs
+nodename=`uname -n`
+if [[ $nodename =~ ^i*farm[0-9]* ]]
+    then
+    export MODULESHOME=/usr/share/Modules
+    source $MODULESHOME/init/bash
+    module load gcc_4.9.2
+fi
 cd $BUILD_DIR/`$BUILD_SCRIPTS/osrelease.pl`/sim-recon/src/doc
 make clean
 make > make.log
