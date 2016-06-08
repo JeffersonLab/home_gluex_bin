@@ -15,9 +15,10 @@ grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log | \
     grep -v 'Clock skew detected' | grep -v 'Obsolete: ' | \
     grep -v 'AMPTOOLS or CLHEP is not defined' | grep -v dl_routines | \
     grep -v "variable 'pyk'" | grep -v "variable 'pychge'" | \
-    grep -v "variable 'pycomp'" | grep -v "Nonconforming tab character" \
+    grep -v "variable 'pycomp'" | grep -v "Nonconforming tab character" | \
+    grep -v "include/Math/Functor.h" \
     >> $REPORT_FILE
-lines=`wc -l $REPORT_FILE | perl -n -e 'split; print $_[0]'`
+lines=`wc -l $REPORT_FILE | perl -n -e '@t = split; print $t[0]'`
 echo "number of lines in report file $REPORT_FILE is $lines"
 if [ $lines -gt 3 ]
 then
