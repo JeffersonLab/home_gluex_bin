@@ -7,6 +7,7 @@
 # missing, it will quietly exit with error code 1
 
 # Set BMS_OSNAME_DEFAULT using default compiler
+module load gcc_4.9.2
 if ( ! -e /group/halld/Software/scripts/osrelease.pl ) exit 1
 setenv BMS_OSNAME_DEFAULT `/group/halld/Software/scripts/osrelease.pl`
 echo "BMS_OSNAME_DEFAULT = $BMS_OSNAME_DEFAULT"
