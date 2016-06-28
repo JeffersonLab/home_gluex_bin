@@ -16,8 +16,7 @@ grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log | \
     grep -v 'AMPTOOLS or CLHEP is not defined' | grep -v dl_routines | \
     grep -v "variable 'pyk'" | grep -v "variable 'pychge'" | \
     grep -v "variable 'pycomp'" | grep -v "Nonconforming tab character" | \
-    grep -v "include/Math/Functor.h" | \
-    grep -v "Possible change of value in conversion from REAL(4) to INTEGER(4)" \
+    grep -v "include/Math/Functor.h" \
     >> $REPORT_FILE
 lines=`wc -l $REPORT_FILE | perl -n -e '@t = split; print $t[0]'`
 echo "number of lines in report file $REPORT_FILE is $lines"
