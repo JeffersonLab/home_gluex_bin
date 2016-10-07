@@ -7,7 +7,11 @@
 # missing, it will quietly exit with error code 1
 
 # Set BMS_OSNAME_DEFAULT using default compiler
-module load gcc_4.9.2
+#module load gcc_4.9.2
+set GCC_HOME=/apps/gcc/4.9.2
+setenv PATH ${GCC_HOME}/bin:${PATH}
+setenv LD_LIBRARY_PATH ${GCC_HOME}/lib64:${GCC_HOME}/lib
+
 if ( ! -e /group/halld/Software/scripts/osrelease.pl ) exit 1
 setenv BMS_OSNAME_DEFAULT `/group/halld/Software/scripts/osrelease.pl`
 echo "BMS_OSNAME_DEFAULT = $BMS_OSNAME_DEFAULT"
@@ -38,12 +42,8 @@ setenv BMS_OSNAME `/group/halld/Software/scripts/osrelease.pl`
 echo "BMS_OSNAME = $BMS_OSNAME"
 
 
-# Setup gcc 4.8.2
-# This is needed because the clang compiler had
-# to be built with a C++11 compliant compiler.
-# Seems it still needs access to the glibc that
-# gcc 4.8.2 provides.
-set gccpath=/apps/gcc/4.8.2
+# Setup gcc 4.9.2
+set gccpath=/apps/gcc/4.9.2
 setenv LD_LIBRARY_PATH ${gccpath}/lib64:${gccpath}/lib:${LD_LIBRARY_PATH}
 
 # Build HDDS for this BMS_OSNAME
@@ -59,10 +59,10 @@ rm -rf html .$BMS_OSNAME ../$BMS_OSNAME
 
 # Run scan-build
 scan-build -o html \
-	--use-cc `which cc` \
-	--use-c++ `which c++` \
+	--use-cc `which clang` \
+	--use-c++ `which clang++` \
 	--use-analyzer `which clang++` \
-	scons -u -j32 install
+	scons -u -j32 install SHOWBUILD=1
 
 # Move generated html to webserver and replace LATEST link to point to it
 if ( ! -e html ) exit 1
