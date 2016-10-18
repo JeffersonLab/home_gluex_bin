@@ -33,7 +33,7 @@ MAILTO=marki@jlab.org
 #     create new versions
 0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
 #     delete old versions
-0 0 * * * cd /group/halld/Software/calib/rcdb_sqlite ; find . \( \( -atime +7 -not -name \*07.sqlite -not -name \*14.sqlite -not -name \*21.sqlite -not -name \*28.sqlite \) -o \( -atime +30 -not -name \*07.sqlite \) -o -atime +365 \) -exec rm -v {} \;
+#0 0 * * * cd /group/halld/Software/calib/rcdb_sqlite ; find . \( \( -atime +7 -not -name \*07.sqlite -not -name \*14.sqlite -not -name \*21.sqlite -not -name \*28.sqlite \) -o \( -atime +30 -not -name \*07.sqlite \) -o -atime +365 \) -exec rm -v {} \;
 #
 # valgrind test
 #   commented out until we have something
@@ -41,13 +41,13 @@ MAILTO=marki@jlab.org
 #
 # update local git repositories
 #
-55 23 * * * /home/gluex/bin/git_update.sh
+55 23 * * * export PATH=/apps/bin:$PATH ; /home/gluex/bin/git_update.sh
 #
 # send out summary of days changes to CCDB
 #
-0 0 * * * /home/gluex/bin/ccdb_changes.sh
+0 0 * * * export PATH=/apps/bin:$PATH ; /home/gluex/bin/ccdb_changes.sh
 #
 # send out monitoring update plots
 #
-0 7 * * * /home/gluex/bin/monitoring_update.py ; cd /group/halld/Software/scripts/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl | grep -v "At revision"
+#0 7 * * * /home/gluex/bin/monitoring_update.py ; cd /group/halld/Software/scripts/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl | grep -v "At revision"
 # end of crontab
