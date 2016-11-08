@@ -1,4 +1,4 @@
-#!/apps/python/python-2.7.1/bin/python2.7
+#!/usr/bin/python
 
 import datetime
 import os
@@ -36,7 +36,7 @@ def main():
 
     # write message file
     message_file = open("/group/halld/Software/scripts/simple_email_list/lists/monitoring_update/message.txt", "w")
-    #message_file = open("/w/halld-scifs1a/home/tbritton/monitoring_cron/bin/message.txt", "w") # just for testing
+    #message_file = open("/u/home/gluex/bin/message.txt", "w") # just for testing
     message_file.write( "Plot browser links for yesterday's runs (since %s): Runs included %d-%d \n\n" % (beginTime.strftime("%Y-%m-%d %H:%M:%S"), beginRun, endRun) )
     message_file.write( "\n ===================================================================== \n" )
     message_file.write( "Occupancy Macros: \n" )
@@ -49,7 +49,7 @@ def main():
 
 
     message_file.write( "\n ===================================================================== \n" )
-    message_file.write( "\n \n High Level Macros: \n" )
+    message_file.write( "\n \n High Level Online Macros: \n" )
     
     # set list of high_level titles and names in this list
     high_level_online_names = [["BCALReconstruction_p1","Recon. BCAL 1"],["BCALReconstruction_p2","Recon. BCAL 2"],["BCALReconstruction_p3","Recon. BCAL 3"],["EventInfo","Recon. Event Info"],["FCALReconstruction_p1","Recon. FCAL 1"],["FCALReconstruction_p2","Recon. FCAL 2"],["FCALReconstruction_p3","Recon. FCAL 3"],["Kinematics_p1","Recon. Kinematics 1"],["Kinematics_p2","Recon. Kinematics 2"],["Matching_BCAL","Recon. BCAL Matching"],["Matching_FCAL","Recon. FCAL Matching"],["Matching_SC","Recon. SC Matching"],["Matching_TOF","Recon. TOF Matching"],["NumHighLevelObjects","Recon. Num. High-Level Objects"],["NumLowLevelObjects_p1","Recon. Num. Low-Level Objects 1"],["NumLowLevelObjects_p2","Recon. Num. Low-Level Objects 2"],["SCReconstruction_p1","Recon. SC 1"],["SCReconstruction_p2","Recon. SC 2"],["TOFReconstruction_p1","Recon. TOF 1"],["TOFReconstruction_p2","Recon. TOF 2"],["Tracking_p1","Recon. Tracking 1"],["Tracking_p2","Recon. Tracking 2"],["Tracking_p3","Recon. Tracking 3"],["TrackMultiplicity",",Recon. Track Multiplicity"]]
