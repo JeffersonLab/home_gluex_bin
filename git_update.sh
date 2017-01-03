@@ -11,4 +11,4 @@ do
     git pull >> $message 2>&1
 done
 cd $list_dir
-../../scripts/simple_email_list.pl | grep -v "At revision"
+../../scripts/simple_email_list.pl > /dev/null
