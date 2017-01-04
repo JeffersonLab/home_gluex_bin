@@ -1,6 +1,6 @@
 #!/bin/sh
 source /group/halld/Software/build_scripts/gluex_env_jlab.sh
-sqlite_file=/group/halld/Software/calib/rcdb_sqlite/rcdb_`date +%F`.sqlite
+sqlite_file=/cache/halld/home/gluex/rcdb_sqlite/rcdb_`date +%F`.sqlite
 minutes_since_change=`mysql -hhallddb -urcdb rcdb \
     -e "select timestampdiff(MINUTE, created, now()) from logs \
     order by created desc limit 1;" | grep -v timestampdiff`
