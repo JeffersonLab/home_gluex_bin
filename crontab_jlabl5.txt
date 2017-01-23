@@ -1,0 +1,26 @@
+#
+# ccdb sqlite version management
+#     create new versions
+0 0 * * * /home/gluex/bin/ccdb_sqlite_create.sh 
+#     delete old versions
+0 0 * * * cd /group/halld/Software/calib/ccdb_sqlite ; find . \( \( -atime +7 -not -name \*07.sqlite -not -name \*14.sqlite -not -name \*21.sqlite -not -name \*28.sqlite \) -o \( -atime +30 -not -name \*07.sqlite \) -o -atime +365 \) -exec rm {} \;
+#
+# update ccdb users from NIS tables
+#
+0 0 * * * /home/gluex/bin/ccdb_update_users.sh
+#
+# send out monitoring update plots
+#
+0 7 * * * /home/gluex/bin/monitoring_update.py ; cd /group/halld/Software/scripts/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl > /dev/null
+#
+# rcdb sqlite version management: create new versions
+#
+0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
+#
+# b1pi analysis
+#
+0 8 * * mon,thu /group/halld/Software/scripts/b1pi_test/b1pi_cron.sh
+#
+# nightly build
+#
+0 0 * * * /home/gluex/bin/nightly.sh
