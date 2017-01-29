@@ -19,7 +19,7 @@ def main():
     # date and time for 24 hours previous
     beginTime = datetime.datetime.now() - datetime.timedelta(days=1)
     beginRun = 0
-    CurrentPeriod = "RunPeriod-2016-10"
+    CurrentPeriod = "RunPeriod-2017-01"
 
     # get first and last runs for the last 24 hours
     query = "event_count>100000 and @is_production" # and time > %s" % beginTime
