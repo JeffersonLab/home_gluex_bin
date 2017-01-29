@@ -19,13 +19,6 @@ done
 /home/gluex/bin/nightly_build_message.sh
 grep -e ' Error ' -e 'Command not found' -e ' warning: ' -e ' Warning: ' -e 'error: ' -e 'No such file' $BUILD_DIR/*.log
 # make doxygen docs
-nodename=`uname -n`
-if [[ $nodename =~ ^i*farm[0-9]* ]]
-    then
-    export MODULESHOME=/usr/share/Modules
-    source $MODULESHOME/init/bash
-    module load gcc_4.9.2
-fi
 cd $BUILD_DIR/`$BUILD_SCRIPTS/osrelease.pl`/sim-recon/src/doc
 make clean
 make > make.log
