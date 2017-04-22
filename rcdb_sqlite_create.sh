@@ -21,6 +21,6 @@ if [ $minutes_since_change -lt 1440 ]
 	echo error: too small to copy
     fi
 else
-    echo info: no recent entries, not creating $sqlite_file
+    echo info: no recent entries, not creating new rcdb sqlite file
 fi
 
