@@ -22,5 +22,6 @@ grep -e ' Error ' -e 'Command not found' -e ' warning: ' -e ' Warning: ' -e 'err
 cd $BUILD_DIR/`$BUILD_SCRIPTS/osrelease.pl`/sim-recon/src/doc
 make clean
 make > make.log
+make install
 # exit
 exit
