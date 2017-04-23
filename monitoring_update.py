@@ -45,7 +45,7 @@ def main():
     message_file.write( "Occupancy Macros: \n" )
     
     # set list of histograms titles and names in this list
-    hist_names = [["CDC_occupancy","CDC"],["FDC_occupancy","FDC"],["FCAL_occupancy","FCAL"],["BCAL_occupancy","BCAL"],["PS_occupancy","PS"],["RF_TPOL_occupancy","RF & TPOL"],["ST_occupancy","ST"],["TAGGER_occupancy","TAGGER"],["TOF_occupancy","TOF"]]
+    hist_names = [["CDC_occupancy","CDC"],["FDC_occupancy","FDC"],["FCAL_occupancy","FCAL"],["BCAL_occupancy","BCAL"],["PS_occupancy","PS"],["RF_TPOL_occupancy","RF & TPOL"],["ST_occupancy","ST"],["TAGGER_occupancy","TAGGER"],["TOF_occupancy","TOF"],["DigiHits_occupancy","Hit Multiplicity"]]
 
     for hist in hist_names:
         message_file.write( "%s: https://halldweb.jlab.org/cgi-bin/data_monitoring/monitoring/plotBrowser.py?run1=%d&run2=%d&plot=%s&ver=rawdata_ver00&period=%s&rcdb_query=%s \n\n" % (hist[1], beginRun, endRun, hist[0], CurrentPeriod, queryshow) )
