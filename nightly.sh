@@ -12,8 +12,18 @@ do
     # /home/gluex/.ssh/build_halld.pub key in
     # /home/gluex/.ssh/authorized_keys. That command should be
     # /group/halld/Software/build_scripts/build_halld.csh.
-    env -u SSH_AUTH_SOCK ssh -i ~/.ssh/build_halld $host >& $logfile
-    mv $logfile $BUILD_DIR/
+    ( \
+    env -u SSH_AUTH_SOCK ssh -i ~/.ssh/build_halld $host >& $logfile 2>&1 \
+    ; \
+    mv $logfile $BUILD_DIR/ \
+    ) &
+done
+nprocs=999
+while [ $nprocs -ne 0 ]
+    do
+    sleep 300
+    nprocs=`ps aux | grep /home/gluex/.ssh/build_halld | grep -v grep | wc -l`
+    echo DEBUG: `date` nprocs = $nprocs
 done
 # send results to the simple list
 /home/gluex/bin/nightly_build_message.sh
