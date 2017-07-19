@@ -20,3 +20,11 @@
 # nightly build
 #
 0 0 * * * /home/gluex/bin/nightly.sh
+#
+# make listing of duplicate cache files
+#
+0 0 * * tue /home/gluex/bin/duplicate_cache.sh
+#
+# change the production links
+#
+#59 23 18 7 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_2.13.2.xml version.xml ; cat version.xml ; ln -s version_2.13.2_jlab.xml version_jlab.xml ; cat version_jlab.xml 
