@@ -8,7 +8,9 @@ date > $REPORT_FILE
 echo This and previous messages can be found at https://halldweb.jlab.org/nightly/ >> $REPORT_FILE
 echo ================ ERRORS ================ >> $REPORT_FILE
 grep -e ' Error ' -e 'Command not found' -e 'error: ' -e 'No such file' \
-    $BUILD_DIR/*.log >> $REPORT_FILE
+    $BUILD_DIR/*.log | \
+    grep -v hdview2/trk_mainframe.h | \
+    >> $REPORT_FILE
 echo ================ WARNINGS ============== >> $REPORT_FILE
 grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log | \
     grep -v hdv_mainframe_Dict.cc | grep -v 'has modification time' | \
