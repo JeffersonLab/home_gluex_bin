@@ -23,7 +23,6 @@ while [ $nprocs -ne 0 ]
     do
     sleep 300
     nprocs=`ps aux | grep /home/gluex/.ssh/build_halld | grep -v grep | wc -l`
-    echo DEBUG: `date` nprocs = $nprocs
 done
 # send results to the simple list
 /home/gluex/bin/nightly_build_message.sh
