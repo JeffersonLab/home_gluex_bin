@@ -9,7 +9,7 @@ echo This and previous messages can be found at https://halldweb.jlab.org/nightl
 echo ================ ERRORS ================ >> $REPORT_FILE
 grep -e ' Error ' -e 'Command not found' -e 'error: ' -e 'No such file' \
     $BUILD_DIR/*.log | \
-    grep -v hdview2/trk_mainframe.h | \
+    grep -v hdview2/trk_mainframe.h \
     >> $REPORT_FILE
 echo ================ WARNINGS ============== >> $REPORT_FILE
 grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log | \
