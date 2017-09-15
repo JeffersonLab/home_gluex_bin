@@ -4,7 +4,7 @@ message="$list_dir/message.txt"
 rm -f $message
 touch $message
 for repo in sim-recon hdds hdpm build_scripts git_test gluex_install \
-    gluex_simulations ccdb rcdb
+    gluex_simulations ccdb rcdb hdgeant4
 do
     echo ----- $repo ----- >> $message
     cd /group/halld/Repositories/$repo
