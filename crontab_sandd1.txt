@@ -1,0 +1,16 @@
+#
+# update access time of files last accessed on 1969-12-31
+#
+0 0 1-31/3 * * find /volatile/halld/ /cache/halld/ -type f -atime +3000 -size +1 -print | perl -n -e 'chomp; system "ls -l $_\n"; system "head $_ > /dev/null\n"'
+#
+# update oasis file system
+#
+#15 0 * * * env -u SSH_AUTH_SOCK ssh -i /home/gluex/.ssh/oasis_update marki@scosg16
+#
+# delete old nightly builds on scratch disk
+#
+0 14 * * * /home/gluex/bin/delete_old_nightly.sh
+#
+# delete old pull-request test builds
+#
+0 0 * * sun find /work/halld/pull_request_test -maxdepth 1 -mtime +30 -exec ls -ld {} \; -exec rm -rf {} \;
