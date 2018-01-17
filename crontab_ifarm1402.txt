@@ -1,6 +1,0 @@
-MAILTO=marki@jlab.org
-#
-# rcdb sqlite version management: create new versions
-#
-0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
-
