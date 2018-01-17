@@ -14,3 +14,7 @@
 # delete old pull-request test builds
 #
 0 0 * * sun find /work/halld/pull_request_test -maxdepth 1 -mtime +30 -exec ls -ld {} \; -exec rm -rf {} \;
+#
+# rcdb sqlite version management: create new versions
+#
+0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
