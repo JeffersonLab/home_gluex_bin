@@ -11,20 +11,12 @@
 #
 # send out monitoring update plots
 #
-0 7 * * * /home/gluex/bin/monitoring_update.py ; cd /group/halld/Software/scripts/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl > /dev/null
+0 5 * * * /home/gluex/bin/monitoring_update.py ; cd /group/halld/Software/scripts/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl > /dev/null
 #
 # b1pi analysis
 #
 0 8 * * mon,thu /group/halld/Software/scripts/b1pi_test/b1pi_cron.sh
 #
-# nightly build
-#
-0 0 * * * /home/gluex/bin/nightly.sh
-#
 # make listing of duplicate cache files
 #
 0 0 * * tue /home/gluex/bin/duplicate_cache.sh
-#
-# change the production links
-#
-#59 23 18 7 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_2.13.2.xml version.xml ; cat version.xml ; ln -s version_2.13.2_jlab.xml version_jlab.xml ; cat version_jlab.xml 

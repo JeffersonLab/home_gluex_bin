@@ -18,3 +18,11 @@
 # rcdb sqlite version management: create new versions
 #
 0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
+#
+# change the production links
+#
+59 23 29 1 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_2.26.xml version.xml ; cat version.xml ; ln -s version_2.26_jlab.xml version_jlab.xml ; cat version_jlab.xml
+#
+# nightly build
+#
+0 0 * * * /home/gluex/bin/nightly.sh
