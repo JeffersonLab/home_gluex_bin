@@ -17,16 +17,18 @@ db = rcdb.RCDBProvider("mysql://rcdb@hallddb/rcdb")
 def main():
 
     # date and time for 24 hours previous
-    beginTime = datetime.datetime.now() - datetime.timedelta(days=1)
+    beginTime = datetime.datetime.now() - datetime.timedelta(days=1) #days=1
     beginRun = 0
-    CurrentPeriod = "RunPeriod-2017-01"
-
+    CurrentPeriod = "RunPeriod-2018-01"#"RunPeriod-2017-01"
+    #print beginTime
     # get first and last runs for the last 24 hours
     query = "event_count>100000 and @is_production" # and time > %s" % beginTime
     queryshow = "@is_production"
     runs = db.select_runs(query)
     for run in runs:
-        #print run.number
+       # print run.number
+       # print run.end_time
+       # print beginTime
         if run.end_time > beginTime:
             beginRun = run.number
             break
