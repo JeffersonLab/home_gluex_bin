@@ -1,0 +1,35 @@
+#!/bin/bash
+rsync_command[0]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/dist/version*.xml /group/halld/www/halldweb/html/dist/*.sqlite ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/dist/'
+rsync_command[1]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/resources/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/resources'
+rsync_stdout=/tmp/rsync_stdout.txt
+rsync_script=/tmp/rsync_script.sh
+files_transferred=false
+for this_command in "${rsync_command[@]}";
+do
+  echo this_command = $this_command    
+  rm -f $rsync_stdout $rsync_script
+  echo '#!/bin/bash' > $rsync_script
+  echo $this_command >> $rsync_script
+  chmod a+x $rsync_script
+  nxfer=`$rsync_script | tee $rsync_stdout | grep "Number of files transferred" | awk -F ":" '{print $2}'`
+  echo nxfer = $nxfer
+  if [ $nxfer -gt 0 ]
+  then
+      echo files transferred
+      files_transferred=true
+  else
+      echo nothing transferred
+  fi
+  cat $rsync_stdout
+  echo ___________________________________________________
+  echo
+done
+echo files_transferred = $files_transferred
+if [ "$files_transferred" = "true" ]
+then
+    echo do something
+else
+    echo do nothing
+fi
+
+
