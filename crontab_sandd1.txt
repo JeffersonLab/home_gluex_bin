@@ -5,7 +5,7 @@
 #
 # update oasis file system
 #
-#15 0 * * * env -u SSH_AUTH_SOCK ssh -i /home/gluex/.ssh/oasis_update marki@scosg16
+0 1,13 * * * /home/gluex/bin/oasis_update.sh
 #
 # delete old nightly builds on scratch disk
 #
@@ -21,8 +21,12 @@
 #
 # change the production links
 #
-59 23 29 1 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_2.26.xml version.xml ; cat version.xml ; ln -s version_2.26_jlab.xml version_jlab.xml ; cat version_jlab.xml
+59 23 7 2 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_2.27.xml version.xml ; cat version.xml ; ln -s version_2.27_jlab.xml version_jlab.xml ; cat version_jlab.xml
 #
 # nightly build
 #
 0 0 * * * /home/gluex/bin/nightly.sh
+#
+# single track reconstruction
+#
+0 8 * * tue export PATH=/apps/bin:$PATH ; /group/halld/Software/scripts/single_track_macros/single_track_cron.sh
