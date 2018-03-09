@@ -1,0 +1,10 @@
+doc/
+src/
+tmp/
+build/
+build_dir/
+documentation/
+.Linux*/
+*.a
+*.tar.gz
+*.tgz
