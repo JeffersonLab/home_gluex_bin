@@ -1,6 +1,8 @@
 #!/bin/bash
 rsync_command[0]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/dist/version*.xml /group/halld/www/halldweb/html/dist/*.sqlite ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/dist/'
 rsync_command[1]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/resources/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/resources'
+rsync_command[2]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/build_scripts/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/build_scripts/'
+rsync_command[3]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/'
 rsync_stdout=/tmp/rsync_stdout.txt
 rsync_script=/tmp/rsync_script.sh
 files_transferred=false
@@ -28,6 +30,8 @@ echo files_transferred = $files_transferred
 if [ "$files_transferred" = "true" ]
 then
     echo do something
+    ssh -i ~/.ssh/oasis_update_rsa ouser.gluex@oasis-login.opensciencegrid.org \
+	osg-oasis-update
 else
     echo do nothing
 fi
