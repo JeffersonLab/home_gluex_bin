@@ -30,7 +30,7 @@ echo files_transferred = $files_transferred
 if [ "$files_transferred" = "true" ]
 then
     echo do something
-#    ssh -i ~/.ssh/oasis_update_rsa ouser.gluex@oasis-login.opensciencegrid.org \
+    ssh -i ~/.ssh/oasis_update_rsa ouser.gluex@oasis-login.opensciencegrid.org \
 	osg-oasis-update
 else
     echo do nothing
