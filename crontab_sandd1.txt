@@ -21,7 +21,7 @@
 #
 # change the production links
 #
-59 23 7 2 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_2.27.xml version.xml ; cat version.xml ; ln -s version_2.27_jlab.xml version_jlab.xml ; cat version_jlab.xml
+59 23 9 3 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_2.29.xml version.xml ; cat version.xml ; ln -s version_2.29_jlab.xml version_jlab.xml ; cat version_jlab.xml
 #
 # nightly build
 #
@@ -30,3 +30,7 @@
 # single track reconstruction
 #
 0 8 * * tue export PATH=/apps/bin:$PATH ; /group/halld/Software/scripts/single_track_macros/single_track_cron.sh
+#
+# work disk report
+#
+0 17 * * fri export PATH=/home/gluex/hd_utilities/disk_management:/usr/bin:$PATH ; nice disk_database.pl /work/halld/ work ; nice disk_report.pl work > /tmp/work_report.html ; cp -pv /tmp/work_report.html /group/halld/www/halldweb/html/disk_management/
