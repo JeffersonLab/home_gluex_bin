@@ -22,8 +22,8 @@ def main():
     CurrentPeriod = "RunPeriod-2018-01"#"RunPeriod-2017-01"
     #print beginTime
     # get first and last runs for the last 24 hours
-    query = "event_count>100000 and @is_production" # and time > %s" % beginTime
-    queryshow = "@is_production"
+    query = "event_count>100000 and @is_2018production" # and time > %s" % beginTime
+    queryshow = "@is_2018production"
     runs = db.select_runs(query)
     for run in runs:
        # print run.number
