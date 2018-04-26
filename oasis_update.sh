@@ -25,11 +25,11 @@ for i in "${!rsync_command[@]}";
   if [ $nxfer -gt 0 ]
   then
       echo files transferred
+      cat $rsync_stdout
       files_transferred=true
   else
       echo nothing transferred
   fi
-  cat $rsync_stdout
   echo ___________________________________________________
   echo
 done
