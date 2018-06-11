@@ -20,7 +20,7 @@ for i in "${!rsync_command[@]}";
   echo '#!/bin/bash' > $rsync_script
   echo $this_command >> $rsync_script
   chmod a+x $rsync_script
-  nxfer=`$rsync_script | tee $rsync_stdout | grep "Number of regular files transferred" | awk -F ":" '{print $2}'`
+  nxfer=`$rsync_script | tee $rsync_stdout | grep "Number of regular files transferred" | awk -F ":" '{print $2}' | sed s/,//g`
   echo nxfer = $nxfer
   if [ $nxfer -gt 0 ]
   then
