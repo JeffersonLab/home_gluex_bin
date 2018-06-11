@@ -1,6 +1,5 @@
 doc/
 src/
-tmp/
 build/
 build_dir/
 documentation/
