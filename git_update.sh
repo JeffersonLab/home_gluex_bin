@@ -3,8 +3,9 @@ list_dir=/group/halld/Software/scripts/simple_email_list/lists/git_update
 message="$list_dir/message.txt"
 rm -f $message
 touch $message
-for repo in sim-recon hdds hdpm build_scripts git_test gluex_install \
-    gluex_simulations ccdb rcdb hdgeant4
+for repo in halld_recon halld_sim sim-recon hdds hdpm build_scripts git_test \
+    gluex_install gluex_simulations ccdb rcdb hdgeant4 gluex_root_analysis \
+    gluex_MCwrapper
 do
     echo ----- $repo ----- >> $message
     cd /group/halld/Repositories/$repo
