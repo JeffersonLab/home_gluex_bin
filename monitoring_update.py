@@ -22,9 +22,10 @@ def main():
     CurrentPeriod = "RunPeriod-2018-08"#"RunPeriod-2017-01"
     #print beginTime
     # get first and last runs for the last 24 hours
-    query = "event_count>100000 and @is_2018production" # and time > %s" % beginTime
+    query = r'event_count%3E100000%20and%20@is_2018production' # and time > %s" % beginTime
+    queryfor_rcdb = r'event_count>100000 and @is_2018production' # and time > %s" % beginTime
     queryshow = "@is_2018production"
-    runs = db.select_runs(query)
+    runs = db.select_runs(queryfor_rcdb)
     for run in runs:
        # print run.number
        # print run.end_time
@@ -39,6 +40,7 @@ def main():
         sys.exit()
 
     # write message file
+    #message_file = open("./message.txt", "w")
     message_file = open("/group/halld/Software/scripts/simple_email_list/lists/monitoring_update/message.txt", "w")
     #message_file = open("/u/home/gluex/bin/message.txt", "w") # just for testing
 
