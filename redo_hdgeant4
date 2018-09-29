@@ -7,6 +7,6 @@ else
 fi
 echo date = $date
 export BUILD_SCRIPTS=/group/halld/Software/build_scripts
-pushd /u/scratch/gluex/nightly/$date/Linux_CentOS7-x86_64-gcc4.8.5
+pushd /u/scratch/gluex/nightly/$date/`$BUILD_SCRIPTS/osrelease.pl`
 source $BUILD_SCRIPTS/gluex_env_jlab.sh version_$date.xml
 make -f $BUILD_SCRIPTS/Makefile_hdgeant4
