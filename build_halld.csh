@@ -7,7 +7,9 @@ if ( $BMS_OSNAME =~ *CentOS6* || $BMS_OSNAME =~ *RHEL6* ) then
     setenv PATH ${GCC_HOME}/bin:${PATH}
     setenv BMS_OSNAME `$BUILD_SCRIPTS/osrelease.pl`
 endif
-setenv TARGET_DIR /u/scratch/$USER/nightly/$TODAYS_DATE/$BMS_OSNAME
+if (! $?TARGET_DIR) then
+    setenv TARGET_DIR /u/scratch/$USER/nightly/$TODAYS_DATE/$BMS_OSNAME
+endif
 mkdir -pv $TARGET_DIR
 # make an xml file
 set xml=$TARGET_DIR/version_${TODAYS_DATE}.xml
