@@ -6,14 +6,14 @@ rsync_command[1]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_updat
 rsync_comment[2]="build_scripts directory"
 rsync_command[2]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/build_scripts/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/build_scripts/'
 rsync_comment[3]="container build directory"
-rsync_command[3]='rsync -ruvtl --delete --delete-excluded --exclude-from=/home/gluex/bin/oasis_exclude_build.txt --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/'
+rsync_command[3]='rsync -ruvtl --delete --exclude-from=/home/gluex/bin/oasis_exclude_build.txt --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/'
 rsync_comment[4]="container full build directory"
-rsync_command[4]='rsync -ruvtl --delete --delete-excluded --exclude .Linux\* --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/recent/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/recent/'
-rsync_stdout=/tmp/rsync_stdout.txt
-rsync_script=/tmp/rsync_script.sh
+rsync_command[4]='rsync -ruvtl --delete --exclude .Linux\* --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/recent/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/recent/'
 files_transferred=false
 for i in "${!rsync_command[@]}";
   do
+  rsync_stdout=/tmp/rsync_stdout_${i}.txt
+  rsync_script=/tmp/rsync_script_${i}.sh
   this_comment=${rsync_comment[$i]}
   this_command=${rsync_command[$i]}
   echo rsync command ${i}: $this_comment
