@@ -5,11 +5,11 @@
 #
 # update oasis file system
 #
-0 1,13 * * * /home/gluex/bin/oasis_update.sh
+0 1,7,13,19 * * * /home/gluex/bin/oasis_update.sh
 #
 # delete old nightly builds on scratch disk
 #
-0 14 * * * /home/gluex/bin/delete_old_nightly.sh
+0 0 1-31/6 * * /home/gluex/bin/delete_old_nightly.sh
 #
 # delete old pull-request test builds
 #
@@ -21,7 +21,7 @@
 #
 # change the production links
 #
-59 23 9 3 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_2.29.xml version.xml ; cat version.xml ; ln -s version_2.29_jlab.xml version_jlab.xml ; cat version_jlab.xml
+59 23 17 1 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_4.0.0.xml version.xml ; cat version.xml ; ln -s version_4.0.0_opt.xml version_jlab.xml ; cat version_jlab.xml ; ln -s version_4.0.0_opt.xml version_opt.xml ; cat version_opt.xml ; ln -s version_4.0.0_dbg.xml version_dbg.xml ; cat version_dbg.xml 
 #
 # nightly build
 #
@@ -33,4 +33,12 @@
 #
 # work disk report
 #
-0 17 * * fri export PATH=/home/gluex/hd_utilities/disk_management:/usr/bin:$PATH ; nice disk_database.pl /work/halld/ work ; nice disk_report.pl work > /tmp/work_report.html ; cp -pv /tmp/work_report.html /group/halld/www/halldweb/html/disk_management/
+#0 17 * * fri export PATH=/home/gluex/hd_utilities/disk_management:/usr/bin:$PATH ; nice disk_database.pl /work/halld/ work ; nice disk_report.pl work > /tmp/work_report.html ; cp -pv /tmp/work_report.html /group/halld/www/halldweb/html/disk_management/
+#
+# b1pi analysis
+#
+0 8 * * mon,thu /group/halld/Software/hd_utilities/b1pi_test/b1pi_cron.sh
+#
+# check for old-ish .Linux directories
+#
+8 12 * * 1 find /group/halld/Software/builds -maxdepth 5 -type d -name .Linux_\* -mtime +7
