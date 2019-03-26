@@ -1,7 +1,7 @@
 #!/bin/sh
 BUILD_DIR=/u/scratch/gluex/nightly/`date +%F`
 REPORT_FILE=/tmp/nightly_report.txt
-LIST_DIR=/group/halld/Software/scripts/simple_email_list/lists/nightly_build
+LIST_DIR=/home/gluex/simple_email_list/lists/nightly_build
 WEB_DIR=/group/halld/www/halldweb/html/nightly
 rm -f $REPORT_FILE
 date > $REPORT_FILE
