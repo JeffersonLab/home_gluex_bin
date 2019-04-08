@@ -1,5 +1,5 @@
 #!/bin/sh
-listdir=/group/halld/Software/scripts/simple_email_list
+listdir=/home/gluex/simple_email_list
 hours_since_change=$1
 simple_list=$2
 tempfile=/tmp/$2.txt
