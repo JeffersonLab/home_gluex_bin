@@ -21,7 +21,7 @@
 #
 # change the production links
 #
-59 23 17 1 * pushd /group/halld/www/halldweb/html/dist ; rm -v version.xml version_jlab.xml ; ln -s version_4.0.0.xml version.xml ; cat version.xml ; ln -s version_4.0.0_opt.xml version_jlab.xml ; cat version_jlab.xml ; ln -s version_4.0.0_opt.xml version_opt.xml ; cat version_opt.xml ; ln -s version_4.0.0_dbg.xml version_dbg.xml ; cat version_dbg.xml 
+59 23 26 3 * /home/gluex/bin/update_links.sh version_4.3.0.xml
 #
 # nightly build
 #
@@ -42,3 +42,20 @@
 # check for old-ish .Linux directories
 #
 8 12 * * 1 find /group/halld/Software/builds -maxdepth 5 -type d -name .Linux_\* -mtime +7
+#
+# valgrind test
+#   commented out until we have something
+#0 0 * * wed,sat /group/halld/Software/scripts/valgrind/valgrind_cron.sh
+#
+# update local git repositories
+#
+55 23 * * * export PATH=/apps/bin:$PATH ; /home/gluex/bin/git_update.sh
+#
+# send out summary of days changes to CCDB
+#
+1 0 * * * export PATH=/apps/bin:$PATH ; /home/gluex/bin/ccdb_changes.sh 24 ccdb_changes
+0 * * * * export PATH=/apps/bin:$PATH ; /home/gluex/bin/ccdb_changes.sh 1 ccdb_changes_hourly 2>&1 | grep -v "empty message"
+#
+# make listing of duplicate cache files
+#
+0 0 * * tue /home/gluex/bin/duplicate_cache.sh
