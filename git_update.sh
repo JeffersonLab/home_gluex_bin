@@ -1,5 +1,5 @@
 #!/bin/sh
-list_dir=/group/halld/Software/scripts/simple_email_list/lists/git_update
+list_dir=/home/gluex/simple_email_list/lists/git_update
 message="$list_dir/message.txt"
 rm -f $message
 touch $message
