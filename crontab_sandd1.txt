@@ -19,9 +19,10 @@
 #
 0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
 #
-# change the production links
+# change the production links (do it before midnight so the nightly
+# build will pick up the new version)
 #
-59 23 26 3 * /home/gluex/bin/update_links.sh version_4.3.0.xml
+59 23 3 7 * /home/gluex/bin/update_links.sh version_4.6.0.xml
 #
 # nightly build
 #
@@ -59,3 +60,7 @@
 # make listing of duplicate cache files
 #
 0 0 * * tue /home/gluex/bin/duplicate_cache.sh
+#
+# refresh the ccdb.sqlite mirrors
+#
+30 0 * * * /group/halld/Software/build_scripts/mk_mirrors.sh
