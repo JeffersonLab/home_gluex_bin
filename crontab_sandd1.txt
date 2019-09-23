@@ -22,7 +22,7 @@
 # change the production links (do it before midnight so the nightly
 # build will pick up the new version)
 #
-59 23 3 7 * /home/gluex/bin/update_links.sh version_4.6.0.xml
+59 23 29 8 * /home/gluex/bin/update_links.sh version_4.8.0.xml
 #
 # nightly build
 #
@@ -64,3 +64,13 @@
 # refresh the ccdb.sqlite mirrors
 #
 30 0 * * * /group/halld/Software/build_scripts/mk_mirrors.sh
+#
+# time histories
+#
+0 * * * * /group/halld/Software/time-history-plots/plots/df/df.py
+0,10,20,30,40,50 * * * * /group/halld/Software/time-history-plots/plots/mysql/mysql.sh
+2 * * * * export THP=/group/halld/Software/time-history-plots ; export PATH=$THP/plots/jobstat:$PATH ; cd /group/halld/time_history_data ; make_user_thdml.sh > user_jobs.thdml.tmp ; mv user_jobs.thdml.tmp user_jobs.thdml
+#
+# make time history web page
+#
+0,10,20,30,40,50 * * * * export THP=/group/halld/Software/time-history-plots ; export PATH=$THP/plots/jobstat:$THP/scripts:$PATH ; cd /group/halld/time_history_data ; make_user_thpml.py > user_jobs.thpml.template.tmp ; mv user_jobs.thpml.template.tmp user_jobs.thpml.template ; cd /group/halld/www/halldweb/html/disk_management ; make_status_page.sh
