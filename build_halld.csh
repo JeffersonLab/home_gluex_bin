@@ -7,6 +7,9 @@ if ( $BMS_OSNAME =~ *CentOS6* || $BMS_OSNAME =~ *RHEL6* ) then
     setenv PATH ${GCC_HOME}/bin:${PATH}
     setenv BMS_OSNAME `$BUILD_SCRIPTS/osrelease.pl`
 endif
+if ( $BMS_OSNAME =~ *RHEL* ) then
+    setenv PATH /apps/bin:${PATH}
+endif
 if (! $?TARGET_DIR) then
     setenv TARGET_DIR /u/scratch/$USER/nightly/$TODAYS_DATE/$BMS_OSNAME
 endif
@@ -14,7 +17,7 @@ mkdir -pv $TARGET_DIR
 # make an xml file
 set xml=$TARGET_DIR/version_${TODAYS_DATE}.xml
 $BUILD_SCRIPTS/customize_version.pl \
-    -i /group/halld/www/halldweb/html/dist/version_jlab.xml \
+    -i /group/halld/www/halldweb/html/halld_versions/version_jlab.xml \
     -o $xml \
     -r $TARGET_DIR/halld_recon \
     -m $TARGET_DIR/halld_sim \
