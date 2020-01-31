@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 BUILD_DIR=/u/scratch/gluex/nightly/`date +%F`
 REPORT_FILE=/tmp/nightly_report.txt
 LIST_DIR=/home/gluex/simple_email_list/lists/nightly_build
