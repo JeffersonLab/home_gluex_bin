@@ -21,13 +21,13 @@ def main():
     # date and time for 24 hours previous
     beginTime = datetime.datetime.now() - datetime.timedelta(days=1) #days=1
     beginRun = 0
-    CurrentPeriod = "RunPeriod-2019-01"#"RunPeriod-2017-01"
+    CurrentPeriod = "RunPeriod-2019-11"#"RunPeriod-2017-01"
     #print beginTime
     # get first and last runs for the last 24 hours
-    query = r'event_count%3E10000000' # and time > %s" % beginTime
-    queryfor_rcdb = r'event_count>10000000' # and time > %s" % beginTime
+    query = r'event_count%3E10000' # and time > %s" % beginTime
+    queryfor_rcdb = r'event_count>10000' # and time > %s" % beginTime
     queryshow = ""
-    runs = db.select_runs(queryfor_rcdb,60000,70000)
+    runs = db.select_runs(queryfor_rcdb,70000,80000)
     #print runs
     for run in runs:
         print run.number
@@ -46,7 +46,8 @@ def main():
 
     # write message file
     #message_file = open("./message.txt", "w")
-    message_file = open("/group/halld/Software/scripts/simple_email_list/lists/monitoring_update/message.txt", "w")
+    #message_file = open("/group/halld/Software/scripts/simple_email_list/lists/monitoring_update/message.txt", "w")
+    message_file = open("/home/gluex/simple_email_list/lists/monitoring_update/message.txt", "w")
     #message_file = open("/u/home/gluex/bin/message.txt", "w") # just for testing
 
     message_file.write( "Plot browser links for yesterday's runs (since %s): Runs included %d-%d \n\n" % (beginTime.strftime("%Y-%m-%d %H:%M:%S"), beginRun, endRun) )
@@ -54,7 +55,8 @@ def main():
     message_file.write( "Occupancy Macros: \n" )
     
     # set list of histograms titles and names in this list
-    hist_names = [["CDC_occupancy","CDC"],["FDC_occupancy","FDC"],["FCAL_occupancy","FCAL"],["BCAL_occupancy","BCAL"],["PS_occupancy","PS"],["RF_TPOL_occupancy","RF & TPOL"],["ST_occupancy","ST"],["TAGGER_occupancy","TAGGER"],["TOF_occupancy","TOF"],["DigiHits_occupancy","Hit Multiplicity"],["DIRC_occupancy","DIRC"],["DIRC_hit","DIRC Hits"],["DIRC_digihit","DIRC DigiHits"],["CCAL_occupancy","CCAL occupancy"],["ccal_cluster_et","CCAL Cluster et"],["ccal_cluster_space","CCAL Cluster Space"],["ccal_comp2","CCAL Comp 2"],["ccal_comp","CCAL Comp"],["ccal_dig_pedestal","CCAL Digi Pedestal"],["ccal_dig_pulse","CCAL Digi Pulse"],["ccal_hit_energy","CCAL Hit Energy"]]
+    hist_names = [["CDC_occupancy","CDC"],["FDC_occupancy","FDC"],["FCAL_occupancy","FCAL"],["BCAL_occupancy","BCAL"],["PS_occupancy","PS"],["RF_TPOL_occupancy","RF & TPOL"],["ST_occupancy","ST"],["TAGGER_occupancy","TAGGER"],["TOF_occupancy","TOF"],["DigiHits_occupancy","Hit Multiplicity"],["DIRC_occupancy","DIRC South"],["DIRC_North_occupancy","DIRC North"],["DIRC_hit","DIRC Hits"],["DIRC_digihit","DIRC DigiHits"],["CCAL_occupancy","CCAL occupancy"]]
+#,["ccal_cluster_et","CCAL Cluster et"],["ccal_cluster_space","CCAL Cluster Space"],["ccal_comp2","CCAL Comp 2"],["ccal_comp","CCAL Comp"],["ccal_dig_pedestal","CCAL Digi Pedestal"],["ccal_dig_pulse","CCAL Digi Pulse"],["ccal_hit_energy","CCAL Hit Energy"]]
 
     for hist in hist_names:
         message_file.write( "%s: https://halldweb.jlab.org/data_monitoring/Plot_Browser.html?minRunNum=%d&maxRunNum=%d&RunPeriod=%s&Version=rawdata_ver00&Plot=%s&rcdb_query=%s \n\n" % (hist[1], beginRun, endRun, CurrentPeriod, hist[0], query) )
