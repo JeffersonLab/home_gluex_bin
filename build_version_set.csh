@@ -25,6 +25,6 @@ pushd $GLUEX_TOP
 #
 # build
 #
-set logname=$start_dir/make_`hostname`_`date +%F`.log
+set logname=$start_dir/make_`hostname`_`date +%m-%d:%T`.log
 rm -fv $logname
 make -f $BUILD_SCRIPTS/Makefile_all gluex_pass2 > & $logname &
