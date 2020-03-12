@@ -1,6 +1,6 @@
 #!/bin/sh
 version_xml=$1
-hosts="ifarm1402 ifarm1802 jlabl5"
+hosts="ifarm1802 jlabl5"
 # loop over hosts
 for host in $hosts
 do
