@@ -1,0 +1,18 @@
+SHELL=/bin/tcsh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=aaustreg@jlab.org
+HOME=/home/gluex
+LOGDIR=/home/gluex/halld/monitoring/log
+
+*/15 * * * * /home/gluex/halld/monitoring/process/check_new_runs.csh >! /home/gluex/halld/monitoring/process/check_new_runs.log
+15 */6 * * * /home/gluex/halld/monitoring/process/update_runinfo.csh
+
+# Run clang's scan-build code analyzer on nightly build
+# 12/4/2015 DL
+15 5 * * * /home/gluex/bin/nightly-scan-build.csh >& /dev/null
+
+MAILTO=aaustreg@jlab.org
+# Recon tests
+0  8 */3 * * /bin/bash -c /group/halld/Software/scripts/monitoring/recon_test/cron_exec.sh >! /group/halld/Software/scripts/monitoring/recon_test/recon_test.log
+30 16 8 6 * /bin/bash -c /group/halld/Software/scripts/monitoring/recon_test/cron_exec.sh >! /group/halld/Software/scripts/monitoring/recon_test/recon_test.log
+
