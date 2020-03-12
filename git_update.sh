@@ -9,7 +9,7 @@ for repo in halld_recon halld_sim sim-recon hdds hdpm build_scripts git_test \
 do
     echo ----- $repo ----- >> $message
     cd /group/halld/Repositories/$repo
-    git pull >> $message 2>&1
+    git pull --all >> $message 2>&1
 done
 cd $list_dir
 ../../scripts/simple_email_list.pl > /dev/null
