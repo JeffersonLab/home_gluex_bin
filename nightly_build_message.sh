@@ -33,6 +33,8 @@ if [ $lines -gt 4 ]
 then
     cp -pv $REPORT_FILE $LIST_DIR/message.txt
     pushd $LIST_DIR
+    echo file info for message.txt:
+    file message.txt
     $LIST_DIR/../../scripts/simple_email_list.pl
     popd
     pushd $WEB_DIR
