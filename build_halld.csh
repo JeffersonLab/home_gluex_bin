@@ -15,17 +15,18 @@ if (! $?TARGET_DIR) then
 endif
 mkdir -pv $TARGET_DIR
 # make an xml file
-set xml=$TARGET_DIR/version_${TODAYS_DATE}.xml
+set xmlfilename=version_${TODAYS_DATE}.xml
+set xmlpath=$TARGET_DIR/$xmlfilename
 $BUILD_SCRIPTS/customize_version.pl \
     -i /group/halld/www/halldweb/html/halld_versions/version_jlab.xml \
-    -o $xml \
+    -o $xmlpath \
     -r $TARGET_DIR/halld_recon \
     -m $TARGET_DIR/halld_sim \
     -g $TARGET_DIR/hdds \
     -4 $TARGET_DIR/hdgeant4 \
     -a $TARGET_DIR/gluex_root_analysis
 # set-up the environment
-source $BUILD_SCRIPTS/gluex_env_jlab.csh $xml
+source $BUILD_SCRIPTS/gluex_env_jlab.csh $xmlpath
 setenv HDDS_URL file:///group/halld/Repositories/hdds
 setenv HALLD_RECON_URL file:///group/halld/Repositories/halld_recon
 setenv HALLD_SIM_URL file:///group/halld/Repositories/halld_sim
@@ -33,6 +34,8 @@ setenv HDGEANT4_URL file:///group/halld/Repositories/hdgeant4
 setenv GLUEX_ROOT_ANALYSIS_URL file:///group/halld/Repositories/gluex_root_analysis
 # go to the target directory
 cd $TARGET_DIR
+# link to new xml with generic name
+ln -s $xmlfilename version.xml
 # make hdds
 make -f $BUILD_SCRIPTS/Makefile_hdds HDDS_SCONS_OPTIONS="SHOWBUILD=1"
 # make recon
