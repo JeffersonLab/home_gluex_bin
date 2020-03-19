@@ -1,14 +1,16 @@
 #!/bin/bash
 rsync_comment[0]='dist directory'
-rsync_command[0]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/dist/version*.xml /group/halld/www/halldweb/html/dist/*.sqlite ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/dist/'
+rsync_command[0]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/dist/*.sqlite ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/dist/'
 rsync_comment[1]="resources directory"
-rsync_command[1]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/resources/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/resources'
+rsync_command[1]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/resources/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/resources/'
 rsync_comment[2]="build_scripts directory"
 rsync_command[2]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/build_scripts/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/build_scripts/'
 rsync_comment[3]="container build directory"
 rsync_command[3]='rsync -ruvtl --delete --exclude-from=/home/gluex/bin/oasis_exclude_build.txt --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/'
 rsync_comment[4]="container full build directory"
 rsync_command[4]='rsync -ruvtl --delete --exclude .Linux\* --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/recent/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8.5-cntr/recent/'
+rsync_comment[5]="halld_versions directory"
+rsync_command[5]='rsync -ruvtl --delete --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/www/halldweb/html/halld_versions/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/www/halldweb/html/halld_versions/'
 files_transferred=false
 for i in "${!rsync_command[@]}";
   do
@@ -17,7 +19,7 @@ for i in "${!rsync_command[@]}";
   this_comment=${rsync_comment[$i]}
   this_command=${rsync_command[$i]}
   echo rsync command ${i}: $this_comment
-#  echo $i $this_command
+  echo $i $this_command
   rm -f $rsync_stdout $rsync_script
   echo '#!/bin/bash' > $rsync_script
   echo $this_command >> $rsync_script
@@ -27,7 +29,7 @@ for i in "${!rsync_command[@]}";
   if [ $nxfer -gt 0 ]
   then
       echo files transferred
-      #cat $rsync_stdout
+      cat $rsync_stdout
       files_transferred=true
   else
       echo nothing transferred
