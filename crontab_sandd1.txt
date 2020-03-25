@@ -22,7 +22,7 @@
 # change the production links (do it before midnight so the nightly
 # build will pick up the new version)
 #
-59 23 29 8 * /home/gluex/bin/update_links.sh version_4.8.0.xml
+59 23 22 3 * /home/gluex/bin/update_links.sh version_4.17.0.xml
 #
 # nightly build
 #
@@ -32,9 +32,10 @@
 #
 0 8 * * tue export PATH=/apps/bin:$PATH ; /group/halld/Software/scripts/single_track_macros/single_track_cron.sh
 #
-# work disk report
+# disk reports
 #
-#0 17 * * fri export PATH=/home/gluex/hd_utilities/disk_management:/usr/bin:$PATH ; nice disk_database.pl /work/halld/ work ; nice disk_report.pl work > /tmp/work_report.html ; cp -pv /tmp/work_report.html /group/halld/www/halldweb/html/disk_management/
+#57 13 27 1 * export PATH=/home/gluex/hd_utilities/disk_management:$PATH ; nice disk_database.pl /work/halld/ work ; nice disk_report.pl work > /tmp/work_report.html ; cp -pv /tmp/work_report.html /group/halld/www/halldweb/html/disk_management/
+#3 14 27 1 * export PATH=/home/gluex/hd_utilities/disk_management:$PATH ; nice disk_database.pl /group/halld/ group ; nice disk_report.pl group > /tmp/group_report.html ; cp -pv /tmp/group_report.html /group/halld/www/halldweb/html/disk_management/
 #
 # b1pi analysis
 #
@@ -52,7 +53,7 @@
 #
 55 23 * * * export PATH=/apps/bin:$PATH ; /home/gluex/bin/git_update.sh
 #
-# send out summary of days changes to CCDB
+# send out summary of changes to CCDB
 #
 1 0 * * * export PATH=/apps/bin:$PATH ; /home/gluex/bin/ccdb_changes.sh 24 ccdb_changes
 0 * * * * export PATH=/apps/bin:$PATH ; /home/gluex/bin/ccdb_changes.sh 1 ccdb_changes_hourly 2>&1 | grep -v "empty message"
@@ -70,7 +71,9 @@
 0 * * * * /group/halld/Software/time-history-plots/plots/df/df.py
 0,10,20,30,40,50 * * * * /group/halld/Software/time-history-plots/plots/mysql/mysql.sh
 2 * * * * export THP=/group/halld/Software/time-history-plots ; export PATH=$THP/plots/jobstat:$PATH ; cd /group/halld/time_history_data ; make_user_thdml.sh > user_jobs.thdml.tmp ; mv user_jobs.thdml.tmp user_jobs.thdml
+0 */6 * * * env -u SSH_AUTH_SOCK ssh -i ~/.ssh/id_batch scosg16 /group/halld/Software/time-history-plots/plots/oasis/oasis.py
 #
 # make time history web page
 #
-0,10,20,30,40,50 * * * * export THP=/group/halld/Software/time-history-plots ; export PATH=$THP/plots/jobstat:$THP/scripts:$PATH ; cd /group/halld/time_history_data ; make_user_thpml.py > user_jobs.thpml.template.tmp ; mv user_jobs.thpml.template.tmp user_jobs.thpml.template ; cd /group/halld/www/halldweb/html/disk_management ; make_status_page.sh
+0,10,20,30,40,50 * * * * /group/halld/Software/time-history-plots/scripts/offline_plots_cron.sh
+22 23 * * 5 /home/gluex/bin/doxygen.sh
