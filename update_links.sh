@@ -15,5 +15,4 @@ if [[ -z $file_in ]]
     echo "error: missing xml file argument"
     exit 1
 fi
-switch /group/halld/www/halldweb/html/dist $file_in
 switch /group/halld/www/halldweb/html/halld_versions $file_in
