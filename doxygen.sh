@@ -3,13 +3,13 @@ echo make doxygen docs
 DOXDIR=/u/scratch/gluex/doxygen/`date +%F`
 WEBDIR=/group/halld/www/halldweb/html/doxygen
 mkdir -pv $DOXDIR
-echo cd to $DOXDIR
-cd $DOXDIR
-echo ls
-ls
 
 make_html () {
     package=$1
+    echo cd to $DOXDIR
+    cd $DOXDIR
+    echo ls
+    ls
     echo remove previous $package directory
     rm -rf $package
     git clone --quiet https://github.com/jeffersonlab/$package
@@ -17,6 +17,7 @@ make_html () {
     make \
 	| grep -v Generating | grep -v Preprocessing | grep -v Parsing \
 	| grep -v Searching
+    rm -rf $WEBDIR/${package}_new
     cp -r html $WEBDIR/${package}_new
     echo cd to $WEBDIR
     cd $WEBDIR
