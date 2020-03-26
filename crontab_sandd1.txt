@@ -34,8 +34,8 @@
 #
 # disk reports
 #
-#57 13 27 1 * export PATH=/home/gluex/hd_utilities/disk_management:$PATH ; nice disk_database.pl /work/halld/ work ; nice disk_report.pl work > /tmp/work_report.html ; cp -pv /tmp/work_report.html /group/halld/www/halldweb/html/disk_management/
-#3 14 27 1 * export PATH=/home/gluex/hd_utilities/disk_management:$PATH ; nice disk_database.pl /group/halld/ group ; nice disk_report.pl group > /tmp/group_report.html ; cp -pv /tmp/group_report.html /group/halld/www/halldweb/html/disk_management/
+0 0 1,15 * * export PATH=/home/gluex/hd_utilities/disk_management:$PATH ; nice disk_database.pl /work/halld/ work ; nice disk_report.pl work > /tmp/work_report.html ; cp -pv /tmp/work_report.html /group/halld/www/halldweb/html/disk_management/
+0 0 */7 * * export PATH=/home/gluex/hd_utilities/disk_management:$PATH ; nice disk_database.pl /group/halld/ group ; nice disk_report.pl group > /tmp/group_report.html ; cp -pv /tmp/group_report.html /group/halld/www/halldweb/html/disk_management/
 #
 # b1pi analysis
 #
