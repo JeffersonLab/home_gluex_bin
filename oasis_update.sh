@@ -19,7 +19,7 @@ for i in "${!rsync_command[@]}";
   this_comment=${rsync_comment[$i]}
   this_command=${rsync_command[$i]}
   echo rsync command ${i}: $this_comment
-  echo $i $this_command
+  #echo $i $this_command
   rm -f $rsync_stdout $rsync_script
   echo '#!/bin/bash' > $rsync_script
   echo $this_command >> $rsync_script
@@ -29,7 +29,7 @@ for i in "${!rsync_command[@]}";
   if [ $nxfer -gt 0 ]
   then
       echo files transferred
-      cat $rsync_stdout
+      #cat $rsync_stdout
       files_transferred=true
   else
       echo nothing transferred
