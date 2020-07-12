@@ -1,9 +1,7 @@
 doc/
-src/
 build/
 build_dir/
 documentation/
 .Linux*/
-*.a
 *.tar.gz
 *.tgz
