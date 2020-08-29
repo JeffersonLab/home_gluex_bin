@@ -1,8 +1,4 @@
 #
-# update access time of files last accessed on 1969-12-31
-#
-0 0 1-31/3 * * find /volatile/halld/ /cache/halld/ -type f -atime +3000 -size +1 -print | perl -n -e 'chomp; system "ls -l $_\n"; system "head $_ > /dev/null\n"'
-#
 # update oasis file system
 #
 0 1,7,13,19 * * * /home/gluex/bin/oasis_update.sh
@@ -23,7 +19,7 @@
 # build will pick up the new version)
 #
 #the old way  59 23 3 4 * /home/gluex/bin/update_links.sh version_4.18.0.xml
-59 23 5 8 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
+59 23 25 8 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
 #
 # nightly build
 #
