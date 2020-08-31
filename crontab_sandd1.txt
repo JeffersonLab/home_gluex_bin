@@ -12,14 +12,13 @@
 0 0 * * sun find /work/halld/pull_request_test -maxdepth 1 -mtime +30 -exec ls -ld {} \; -exec rm -rf {} \;
 #
 # rcdb sqlite version management: create new versions
-# 2020-04-12: commented out, not running, suspicious lustre performance on sandd1
-#0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
+0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
 #
 # change the default version set (do it before midnight so the nightly
 # build will pick up the new version)
 #
 #the old way  59 23 3 4 * /home/gluex/bin/update_links.sh version_4.18.0.xml
-59 23 25 8 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
+59 23 31 8 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
 #
 # nightly build
 #
