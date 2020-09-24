@@ -18,7 +18,7 @@
 # build will pick up the new version)
 #
 #the old way  59 23 3 4 * /home/gluex/bin/update_links.sh version_4.18.0.xml
-59 23 31 8 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
+59 23 23 9 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
 #
 # nightly build
 #
@@ -35,7 +35,7 @@
 #
 # b1pi analysis
 #
-0 8 * * mon,thu /group/halld/Software/hd_utilities/b1pi_test/b1pi_cron.sh
+0 12 * * mon,thu /group/halld/Software/hd_utilities/b1pi_test/b1pi_cron.sh
 #
 # check for old-ish .Linux directories
 #
