@@ -16,3 +16,5 @@ MAILTO=aaustreg@jlab.org
 0  8 */3 * * /bin/bash -c /group/halld/Software/scripts/monitoring/recon_test/cron_exec.sh >! /group/halld/Software/scripts/monitoring/recon_test/recon_test.log
 30 16 8 6 * /bin/bash -c /group/halld/Software/scripts/monitoring/recon_test/cron_exec.sh >! /group/halld/Software/scripts/monitoring/recon_test/recon_test.log
 
+MAILTO=marki@jlab.org
+15 1 * * 1,3,5 module use /apps/modulefiles; module load singularity; singularity exec --bind /group/halld /group/halld/www/halldweb/html/dist/gluex_centos-7.7.1908.sif /home/gluex/bin/build_halld_container.sh
