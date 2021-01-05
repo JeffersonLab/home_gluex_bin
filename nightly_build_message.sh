@@ -29,7 +29,8 @@ grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log \
     >> $REPORT_FILE
 lines=`wc -l $REPORT_FILE | perl -n -e '@t = split; print $t[0]'`
 echo "number of lines in report file $REPORT_FILE is $lines"
-if [ $lines -gt 4 ]
+#if [ $lines -gt 4 ]
+if [ $lines -lt 0 ]
 then
     cp -pv $REPORT_FILE $LIST_DIR/message.txt
     pushd $LIST_DIR
@@ -45,5 +46,10 @@ then
     mv -v nightly_build_errors_1.txt nightly_build_errors_2.txt
     mv -v nightly_build_errors.txt nightly_build_errors_1.txt
     cp -pv $REPORT_FILE nightly_build_errors.txt
+fi
+day_of_month=`date +%d`
+if [ $day_of_month = "01" ]
+then
+    mail -s "nightly build report (sent once per month)" halld-offline@jlab.org < $REPORT_FILE
 fi
 exit
