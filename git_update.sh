@@ -5,7 +5,7 @@ rm -f $message
 touch $message
 for repo in halld_recon halld_sim sim-recon hdds hdpm build_scripts git_test \
     gluex_install gluex_simulations ccdb rcdb hdgeant4 gluex_root_analysis \
-    gluex_MCwrapper
+    gluex_MCwrapper hd_utilities hd_singularity
 do
     echo ----- $repo ----- >> $message
     cd /group/halld/Repositories/$repo
