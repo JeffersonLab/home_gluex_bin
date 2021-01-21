@@ -29,8 +29,7 @@ grep -e ' warning: ' -e 'Warning: ' -e 'WARNING: ' $BUILD_DIR/*.log \
     >> $REPORT_FILE
 lines=`wc -l $REPORT_FILE | perl -n -e '@t = split; print $t[0]'`
 echo "number of lines in report file $REPORT_FILE is $lines"
-#if [ $lines -gt 4 ]
-if [ $lines -lt 0 ]
+if [ $lines -gt 4 ]
 then
     cp -pv $REPORT_FILE $LIST_DIR/message.txt
     pushd $LIST_DIR
