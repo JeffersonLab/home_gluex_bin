@@ -1,5 +1,5 @@
 #!/bin/bash
-hosts="ifarm1802 jlabl5"
+hosts="ifarm1802 jlabl4"
 SCRIPTS=/group/halld/Software/scripts
 BUILD_SCRIPTS=/group/halld/Software/build_scripts
 BUILD_DIR=/u/scratch/gluex/nightly/`date +%F`
@@ -13,7 +13,7 @@ do
     # /home/gluex/.ssh/authorized_keys. That command should be
     # /home/gluex/bin/build_halld.csh.
     ( \
-    env -u SSH_AUTH_SOCK ssh -i ~/.ssh/build_halld $host >& $logfile 2>&1 \
+    env -u SSH_AUTH_SOCK ssh -i ~/.ssh/build_halld_2 $host >& $logfile 2>&1 \
     ; \
     mv $logfile $BUILD_DIR/ \
     ) &
