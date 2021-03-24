@@ -18,3 +18,7 @@ MAILTO=aaustreg@jlab.org
 
 MAILTO=marki@jlab.org
 15 1 * * 1,3,5 module use /apps/modulefiles; module load singularity; singularity exec --bind /group/halld /group/halld/www/halldweb/html/dist/gluex_centos-7.7.1908.sif /home/gluex/bin/build_halld_container.sh
+
+# Updates database.
+MAILTO=""
+*/5  *  *  *  *  /group/halld/www/halldweb/html/data_monitoring/utilities/update_browser_family.py > /dev/null
