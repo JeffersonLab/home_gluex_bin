@@ -14,5 +14,5 @@ echo launching in singularity container on $host
 env -u SSH_AUTH_SOCK ssh -i ~/.ssh/id_batch $host \
     module use /apps/modulefiles \; \
     module load singularity \; \
-    singularity exec --bind /group/halld $dist/gluex_centos-7.7.1908.sif \
+    singularity exec --bind /group/halld $dist/gluex_centos-7.7.1908_sng3.8_gxi2.22.sif \
     /home/gluex/bin/build_version_set.csh $version_xml
