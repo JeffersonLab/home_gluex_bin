@@ -12,13 +12,13 @@
 0 0 * * sun find /work/halld/pull_request_test -maxdepth 1 -type d -mtime +30 -exec ls -ld {} \; -exec rm -rf {} \;
 #
 # rcdb sqlite version management: create new versions
+#
 0 0 * * * /home/gluex/bin/rcdb_sqlite_create.sh 
 #
 # change the default version set (do it before midnight so the nightly
 # build will pick up the new version)
 #
-#the old way  59 23 3 4 * /home/gluex/bin/update_links.sh version_4.18.0.xml
-59 23 5 5 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
+59 23 23 8 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
 #
 # nightly build
 #
@@ -64,7 +64,7 @@
 #
 # time histories
 #
-0 * * * * /group/halld/Software/time-history-plots/plots/df/df.py
+0,30 * * * * /group/halld/Software/time-history-plots/plots/df/df.py
 0,10,20,30,40,50 * * * * /group/halld/Software/time-history-plots/plots/mysql/mysql.sh
 2 * * * * export THP=/group/halld/Software/time-history-plots ; export PATH=$THP/plots/jobstat:$PATH ; cd /group/halld/time_history_data ; make_user_thdml.sh > user_jobs.thdml.tmp ; mv user_jobs.thdml.tmp user_jobs.thdml
 0 */6 * * * env -u SSH_AUTH_SOCK ssh -i ~/.ssh/id_batch ifarm1901 /group/halld/Software/time-history-plots/plots/oasis/oasis.py
