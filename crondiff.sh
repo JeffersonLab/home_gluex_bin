@@ -1,6 +1,9 @@
 #!/bin/sh
-echo crontab_jlabl1.txt \<\> crontab -l
-tempfile=/tmp/crondiff_$USER.tmp
+node=`hostname | awk -F. '{print $1}'`
+
+echo crontab_${node}.txt \<\> crontab -l
+tempfile=/tmp/crondiff_$RANDOM.tmp
+echo dumping crontab into $tempfile
 rm -f $tempfile
 crontab -l > $tempfile
-diff -s crontab_jlabl1.txt $tempfile
+diff -s crontab_${node}.txt $tempfile
