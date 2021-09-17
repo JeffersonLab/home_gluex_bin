@@ -18,7 +18,7 @@
 # change the default version set (do it before midnight so the nightly
 # build will pick up the new version)
 #
-59 23 23 8 * pushd /group/halld/www/halldweb/html/halld_versions ; git pull
+59 23 2 9 * pushd /group/halld/www/halldweb/html/halld_versions; git pull; cat version.xml
 #
 # nightly build
 #
@@ -79,7 +79,7 @@
 #
 # update the vsdb
 #
-24 4,10,16,22 * * * python /w/halld-scifs17exp/halld2/home/tbritton/GlueX_Software/build_scripts/vsdb/BScrawler.py /group/halld/www/halldweb/html/halld_versions/
+24 4,10,16,22 * * * python /work/halld/halld2/home/tbritton/GlueX_Software/build_scripts/vsdb/BScrawler.py /group/halld/www/halldweb/html/halld_versions/
 #
 # ccdb sqlite version management
 #     create new versions
