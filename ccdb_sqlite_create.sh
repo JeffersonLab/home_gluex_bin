@@ -1,5 +1,5 @@
 #!/bin/sh
-size_min=1560000000
+size_min=1580000000
 source /group/halld/Software/build_scripts/gluex_env_jlab.sh
 sqlite_file=/group/halld/Software/calib/ccdb_sqlite/ccdb_`date +%F`.sqlite
 rm -f $sqlite_file
