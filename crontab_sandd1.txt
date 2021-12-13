@@ -18,7 +18,7 @@
 # change the default version set (do it before midnight so the nightly
 # build will pick up the new version)
 #
-59 23 2 9 * pushd /group/halld/www/halldweb/html/halld_versions; git pull; cat version.xml
+59 23 8 12 * pushd /group/halld/www/halldweb/html/halld_versions; git pull; cat version.xml
 #
 # nightly build
 #
@@ -94,3 +94,7 @@
 # scan-build, v2
 #
 0 0 * * sun /home/gluex/bin/scan-build.sh
+#
+# update ccdb users from group listing
+#
+0 0 * * * /home/gluex/bin/ccdb_update_users.sh
