@@ -31,8 +31,8 @@ chmod u+x $script
 echo $script:
 cat $script
 isitok "Is it OK to tar up the release? "
-#$script
+$script
 echo tar files:
 ls -lh /cache/home/gluex/backups/releases/${version_label}*.tar.gz
 isitok "Is it OK to delete the release? "
-#find . -maxdepth 3 -type d -name $version_label -print -exec rm -rf {} \;
+find . -maxdepth 3 -type d -name $version_label -print -exec rm -rf {} \;
