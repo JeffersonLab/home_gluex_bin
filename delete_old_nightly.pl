@@ -5,9 +5,9 @@ open (FIND, $find_command);
 while (<FIND>) {
     chomp;
     $dir = $_;
-    $count = `find $dir -maxdepth 2 -type f -name \*.xml | wc -l`;
+    $count = `find $dir -maxdepth 3 -type f | wc -l`;
     chomp $count;
-    if ($count < 2) {
+    if ($count < 300) {
 	print "file count for $dir is $count\n";
     }
     if ($count == 0) {
