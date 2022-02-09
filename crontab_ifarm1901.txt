@@ -17,8 +17,15 @@ MAILTO=aaustreg@jlab.org
 30 16 8 6 * /bin/bash -c /group/halld/Software/scripts/monitoring/recon_test/cron_exec.sh >! /group/halld/Software/scripts/monitoring/recon_test/recon_test.log
 
 MAILTO=marki@jlab.org
-15 1 * * 1,3,5 module use /apps/modulefiles; module load singularity; singularity exec --bind /group/halld /group/halld/www/halldweb/html/dist/gluex_centos-7.7.1908.sif /home/gluex/bin/build_halld_container.sh
+15 1 * * 1,3,5 module use /apps/modulefiles; module load singularity; singularity exec --bind /group/halld /group/halld/www/halldweb/html/dist/gluex_centos-7.7.1908_sng3.8_gxi2.22.sif /home/gluex/bin/build_halld_container.sh
+3 13 24 3 * /home/gluex/bin/profile_cron.sh
 
 # Updates database.
 MAILTO=""
 */5  *  *  *  *  /group/halld/www/halldweb/html/data_monitoring/utilities/update_browser_family.py > /dev/null
+
+# Twice-daily online monitoring update
+# send out monitoring update plots
+#   MAILTO="keigo@jlab.org"
+#   0  5 * * * /group/halld/www/halldweb/html/data_monitoring/email/monitoring_update.py ; cd /home/gluex/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl
+#   0 17 * * * /group/halld/www/halldweb/html/data_monitoring/email/monitoring_update.py ; cd /home/gluex/simple_email_list/lists/monitoring_update ; ../../scripts/simple_email_list.pl
