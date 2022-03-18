@@ -5,7 +5,7 @@
 #
 # delete old nightly builds on scratch disk
 #
-0 0 * * * /home/gluex/bin/delete_old_nightly.pl
+0 0 * * sun /home/gluex/bin/delete_old_nightly.pl
 #
 # delete old pull-request test builds
 #
@@ -18,7 +18,7 @@
 # change the default version set (do it before midnight so the nightly
 # build will pick up the new version)
 #
-59 23 8 12 * pushd /group/halld/www/halldweb/html/halld_versions; git pull; cat version.xml
+59 23 9 3 * pushd /group/halld/www/halldweb/html/halld_versions; git pull; cat version.xml
 #
 # nightly build
 #
@@ -79,7 +79,7 @@
 #
 # update the vsdb
 #
-24 4,10,16,22 * * * python /work/halld/halld2/home/tbritton/GlueX_Software/build_scripts/vsdb/BScrawler.py /group/halld/www/halldweb/html/halld_versions/
+24 4,10,16,22 * * * python /group/halld/Software/build_scripts/vsdb/BScrawler.py /group/halld/www/halldweb/html/halld_versions/
 #
 # ccdb sqlite version management
 #     create new versions
