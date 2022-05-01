@@ -15,6 +15,12 @@ rsync_comment[6]="CentOS 8 container build directory"
 rsync_command[6]='rsync -ruvtl --delete --exclude-from=/home/gluex/bin/oasis_exclude_build.txt --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS8-x86_64-gcc8.5.0-cntr/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS8-x86_64-gcc8.5.0-cntr/'
 rsync_comment[7]="container build directory, devtoolset 8"
 rsync_command[7]='rsync -ruvtl --delete --exclude-from=/home/gluex/bin/oasis_exclude_build.txt --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc8.3.1-cntr/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc8.3.1-cntr/'
+rsync_comment[8]="build directory CentOS7 old name"
+rsync_command[8]='rsync -ruvtl --delete --exclude-from=/home/gluex/bin/oasis_exclude_build.txt --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7.7-x86_64-gcc4.8.5/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7.7-x86_64-gcc4.8.5/'
+rsync_comment[9]="build directory CentOS7 new name"
+rsync_command[9]='rsync -ruvtl --delete --exclude-from=/home/gluex/bin/oasis_exclude_build.txt --stats -e '\''ssh -i ~/.ssh/oasis_update_rsa'\'' /group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8/ ouser.gluex@oasis-login.opensciencegrid.org:/home/login/ouser.gluex/stage/group/halld/Software/builds/Linux_CentOS7-x86_64-gcc4.8/'
+
+
 files_transferred=false
 for i in "${!rsync_command[@]}";
   do
