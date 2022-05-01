@@ -28,9 +28,9 @@ done
 /home/gluex/bin/nightly_build_message.sh
 grep -e ' Error ' -e 'Command not found' -e ' warning: ' -e ' Warning: ' -e 'error: ' -e 'No such file' $BUILD_DIR/*.log
 # make doxygen docs
-cd $BUILD_DIR/`$BUILD_SCRIPTS/osrelease.pl`/sim-recon/src/doc
-make clean
-make > make.log
-make install
+# cd $BUILD_DIR/`$BUILD_SCRIPTS/osrelease.pl`/sim-recon/src/doc
+# make clean
+# make > make.log
+# make install
 # exit
 exit
